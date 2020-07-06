@@ -225,7 +225,7 @@ class LatticeBasicCell(
 
     @overrides(AbstractProvidesNKeysForPartition.get_n_keys_for_partition)
     def get_n_keys_for_partition(self, partition, graph_mapper):
-        return 7  # one for p, v, u, cu, cv, z, h
+        return 8  # one for p, v, u, cu, cv, z, h
 
     @property
     def y_position(self):
