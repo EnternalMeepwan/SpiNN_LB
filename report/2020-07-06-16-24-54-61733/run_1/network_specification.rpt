@@ -1,0 +1,1301 @@
+*** Vertices:
+Vertex cell0, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell0 to cell1, model: MachineEdge
+        Edge: SE, From cell0 to cell11, model: MachineEdge
+        Edge: S, From cell0 to cell10, model: MachineEdge
+        Edge: SW, From cell0 to cell19, model: MachineEdge
+        Edge: W, From cell0 to cell9, model: MachineEdge
+        Edge: NW, From cell0 to cell99, model: MachineEdge
+        Edge: N, From cell0 to cell90, model: MachineEdge
+        Edge: NE, From cell0 to cell91, model: MachineEdge
+
+Vertex cell1, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell1 to cell2, model: MachineEdge
+        Edge: SE, From cell1 to cell12, model: MachineEdge
+        Edge: S, From cell1 to cell11, model: MachineEdge
+        Edge: SW, From cell1 to cell10, model: MachineEdge
+        Edge: W, From cell1 to cell0, model: MachineEdge
+        Edge: NW, From cell1 to cell90, model: MachineEdge
+        Edge: N, From cell1 to cell91, model: MachineEdge
+        Edge: NE, From cell1 to cell92, model: MachineEdge
+
+Vertex cell2, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell2 to cell3, model: MachineEdge
+        Edge: SE, From cell2 to cell13, model: MachineEdge
+        Edge: S, From cell2 to cell12, model: MachineEdge
+        Edge: SW, From cell2 to cell11, model: MachineEdge
+        Edge: W, From cell2 to cell1, model: MachineEdge
+        Edge: NW, From cell2 to cell91, model: MachineEdge
+        Edge: N, From cell2 to cell92, model: MachineEdge
+        Edge: NE, From cell2 to cell93, model: MachineEdge
+
+Vertex cell3, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell3 to cell4, model: MachineEdge
+        Edge: SE, From cell3 to cell14, model: MachineEdge
+        Edge: S, From cell3 to cell13, model: MachineEdge
+        Edge: SW, From cell3 to cell12, model: MachineEdge
+        Edge: W, From cell3 to cell2, model: MachineEdge
+        Edge: NW, From cell3 to cell92, model: MachineEdge
+        Edge: N, From cell3 to cell93, model: MachineEdge
+        Edge: NE, From cell3 to cell94, model: MachineEdge
+
+Vertex cell4, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell4 to cell5, model: MachineEdge
+        Edge: SE, From cell4 to cell15, model: MachineEdge
+        Edge: S, From cell4 to cell14, model: MachineEdge
+        Edge: SW, From cell4 to cell13, model: MachineEdge
+        Edge: W, From cell4 to cell3, model: MachineEdge
+        Edge: NW, From cell4 to cell93, model: MachineEdge
+        Edge: N, From cell4 to cell94, model: MachineEdge
+        Edge: NE, From cell4 to cell95, model: MachineEdge
+
+Vertex cell5, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell5 to cell6, model: MachineEdge
+        Edge: SE, From cell5 to cell16, model: MachineEdge
+        Edge: S, From cell5 to cell15, model: MachineEdge
+        Edge: SW, From cell5 to cell14, model: MachineEdge
+        Edge: W, From cell5 to cell4, model: MachineEdge
+        Edge: NW, From cell5 to cell94, model: MachineEdge
+        Edge: N, From cell5 to cell95, model: MachineEdge
+        Edge: NE, From cell5 to cell96, model: MachineEdge
+
+Vertex cell6, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell6 to cell7, model: MachineEdge
+        Edge: SE, From cell6 to cell17, model: MachineEdge
+        Edge: S, From cell6 to cell16, model: MachineEdge
+        Edge: SW, From cell6 to cell15, model: MachineEdge
+        Edge: W, From cell6 to cell5, model: MachineEdge
+        Edge: NW, From cell6 to cell95, model: MachineEdge
+        Edge: N, From cell6 to cell96, model: MachineEdge
+        Edge: NE, From cell6 to cell97, model: MachineEdge
+
+Vertex cell7, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell7 to cell8, model: MachineEdge
+        Edge: SE, From cell7 to cell18, model: MachineEdge
+        Edge: S, From cell7 to cell17, model: MachineEdge
+        Edge: SW, From cell7 to cell16, model: MachineEdge
+        Edge: W, From cell7 to cell6, model: MachineEdge
+        Edge: NW, From cell7 to cell96, model: MachineEdge
+        Edge: N, From cell7 to cell97, model: MachineEdge
+        Edge: NE, From cell7 to cell98, model: MachineEdge
+
+Vertex cell8, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell8 to cell9, model: MachineEdge
+        Edge: SE, From cell8 to cell19, model: MachineEdge
+        Edge: S, From cell8 to cell18, model: MachineEdge
+        Edge: SW, From cell8 to cell17, model: MachineEdge
+        Edge: W, From cell8 to cell7, model: MachineEdge
+        Edge: NW, From cell8 to cell97, model: MachineEdge
+        Edge: N, From cell8 to cell98, model: MachineEdge
+        Edge: NE, From cell8 to cell99, model: MachineEdge
+
+Vertex cell9, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell9 to cell0, model: MachineEdge
+        Edge: SE, From cell9 to cell10, model: MachineEdge
+        Edge: S, From cell9 to cell19, model: MachineEdge
+        Edge: SW, From cell9 to cell18, model: MachineEdge
+        Edge: W, From cell9 to cell8, model: MachineEdge
+        Edge: NW, From cell9 to cell98, model: MachineEdge
+        Edge: N, From cell9 to cell99, model: MachineEdge
+        Edge: NE, From cell9 to cell90, model: MachineEdge
+
+Vertex cell10, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell10 to cell11, model: MachineEdge
+        Edge: SE, From cell10 to cell21, model: MachineEdge
+        Edge: S, From cell10 to cell20, model: MachineEdge
+        Edge: SW, From cell10 to cell29, model: MachineEdge
+        Edge: W, From cell10 to cell19, model: MachineEdge
+        Edge: NW, From cell10 to cell9, model: MachineEdge
+        Edge: N, From cell10 to cell0, model: MachineEdge
+        Edge: NE, From cell10 to cell1, model: MachineEdge
+
+Vertex cell11, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell11 to cell12, model: MachineEdge
+        Edge: SE, From cell11 to cell22, model: MachineEdge
+        Edge: S, From cell11 to cell21, model: MachineEdge
+        Edge: SW, From cell11 to cell20, model: MachineEdge
+        Edge: W, From cell11 to cell10, model: MachineEdge
+        Edge: NW, From cell11 to cell0, model: MachineEdge
+        Edge: N, From cell11 to cell1, model: MachineEdge
+        Edge: NE, From cell11 to cell2, model: MachineEdge
+
+Vertex cell12, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell12 to cell13, model: MachineEdge
+        Edge: SE, From cell12 to cell23, model: MachineEdge
+        Edge: S, From cell12 to cell22, model: MachineEdge
+        Edge: SW, From cell12 to cell21, model: MachineEdge
+        Edge: W, From cell12 to cell11, model: MachineEdge
+        Edge: NW, From cell12 to cell1, model: MachineEdge
+        Edge: N, From cell12 to cell2, model: MachineEdge
+        Edge: NE, From cell12 to cell3, model: MachineEdge
+
+Vertex cell13, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell13 to cell14, model: MachineEdge
+        Edge: SE, From cell13 to cell24, model: MachineEdge
+        Edge: S, From cell13 to cell23, model: MachineEdge
+        Edge: SW, From cell13 to cell22, model: MachineEdge
+        Edge: W, From cell13 to cell12, model: MachineEdge
+        Edge: NW, From cell13 to cell2, model: MachineEdge
+        Edge: N, From cell13 to cell3, model: MachineEdge
+        Edge: NE, From cell13 to cell4, model: MachineEdge
+
+Vertex cell14, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell14 to cell15, model: MachineEdge
+        Edge: SE, From cell14 to cell25, model: MachineEdge
+        Edge: S, From cell14 to cell24, model: MachineEdge
+        Edge: SW, From cell14 to cell23, model: MachineEdge
+        Edge: W, From cell14 to cell13, model: MachineEdge
+        Edge: NW, From cell14 to cell3, model: MachineEdge
+        Edge: N, From cell14 to cell4, model: MachineEdge
+        Edge: NE, From cell14 to cell5, model: MachineEdge
+
+Vertex cell15, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell15 to cell16, model: MachineEdge
+        Edge: SE, From cell15 to cell26, model: MachineEdge
+        Edge: S, From cell15 to cell25, model: MachineEdge
+        Edge: SW, From cell15 to cell24, model: MachineEdge
+        Edge: W, From cell15 to cell14, model: MachineEdge
+        Edge: NW, From cell15 to cell4, model: MachineEdge
+        Edge: N, From cell15 to cell5, model: MachineEdge
+        Edge: NE, From cell15 to cell6, model: MachineEdge
+
+Vertex cell16, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell16 to cell17, model: MachineEdge
+        Edge: SE, From cell16 to cell27, model: MachineEdge
+        Edge: S, From cell16 to cell26, model: MachineEdge
+        Edge: SW, From cell16 to cell25, model: MachineEdge
+        Edge: W, From cell16 to cell15, model: MachineEdge
+        Edge: NW, From cell16 to cell5, model: MachineEdge
+        Edge: N, From cell16 to cell6, model: MachineEdge
+        Edge: NE, From cell16 to cell7, model: MachineEdge
+
+Vertex cell17, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell17 to cell18, model: MachineEdge
+        Edge: SE, From cell17 to cell28, model: MachineEdge
+        Edge: S, From cell17 to cell27, model: MachineEdge
+        Edge: SW, From cell17 to cell26, model: MachineEdge
+        Edge: W, From cell17 to cell16, model: MachineEdge
+        Edge: NW, From cell17 to cell6, model: MachineEdge
+        Edge: N, From cell17 to cell7, model: MachineEdge
+        Edge: NE, From cell17 to cell8, model: MachineEdge
+
+Vertex cell18, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell18 to cell19, model: MachineEdge
+        Edge: SE, From cell18 to cell29, model: MachineEdge
+        Edge: S, From cell18 to cell28, model: MachineEdge
+        Edge: SW, From cell18 to cell27, model: MachineEdge
+        Edge: W, From cell18 to cell17, model: MachineEdge
+        Edge: NW, From cell18 to cell7, model: MachineEdge
+        Edge: N, From cell18 to cell8, model: MachineEdge
+        Edge: NE, From cell18 to cell9, model: MachineEdge
+
+Vertex cell19, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell19 to cell10, model: MachineEdge
+        Edge: SE, From cell19 to cell20, model: MachineEdge
+        Edge: S, From cell19 to cell29, model: MachineEdge
+        Edge: SW, From cell19 to cell28, model: MachineEdge
+        Edge: W, From cell19 to cell18, model: MachineEdge
+        Edge: NW, From cell19 to cell8, model: MachineEdge
+        Edge: N, From cell19 to cell9, model: MachineEdge
+        Edge: NE, From cell19 to cell0, model: MachineEdge
+
+Vertex cell20, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell20 to cell21, model: MachineEdge
+        Edge: SE, From cell20 to cell31, model: MachineEdge
+        Edge: S, From cell20 to cell30, model: MachineEdge
+        Edge: SW, From cell20 to cell39, model: MachineEdge
+        Edge: W, From cell20 to cell29, model: MachineEdge
+        Edge: NW, From cell20 to cell19, model: MachineEdge
+        Edge: N, From cell20 to cell10, model: MachineEdge
+        Edge: NE, From cell20 to cell11, model: MachineEdge
+
+Vertex cell21, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell21 to cell22, model: MachineEdge
+        Edge: SE, From cell21 to cell32, model: MachineEdge
+        Edge: S, From cell21 to cell31, model: MachineEdge
+        Edge: SW, From cell21 to cell30, model: MachineEdge
+        Edge: W, From cell21 to cell20, model: MachineEdge
+        Edge: NW, From cell21 to cell10, model: MachineEdge
+        Edge: N, From cell21 to cell11, model: MachineEdge
+        Edge: NE, From cell21 to cell12, model: MachineEdge
+
+Vertex cell22, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell22 to cell23, model: MachineEdge
+        Edge: SE, From cell22 to cell33, model: MachineEdge
+        Edge: S, From cell22 to cell32, model: MachineEdge
+        Edge: SW, From cell22 to cell31, model: MachineEdge
+        Edge: W, From cell22 to cell21, model: MachineEdge
+        Edge: NW, From cell22 to cell11, model: MachineEdge
+        Edge: N, From cell22 to cell12, model: MachineEdge
+        Edge: NE, From cell22 to cell13, model: MachineEdge
+
+Vertex cell23, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell23 to cell24, model: MachineEdge
+        Edge: SE, From cell23 to cell34, model: MachineEdge
+        Edge: S, From cell23 to cell33, model: MachineEdge
+        Edge: SW, From cell23 to cell32, model: MachineEdge
+        Edge: W, From cell23 to cell22, model: MachineEdge
+        Edge: NW, From cell23 to cell12, model: MachineEdge
+        Edge: N, From cell23 to cell13, model: MachineEdge
+        Edge: NE, From cell23 to cell14, model: MachineEdge
+
+Vertex cell24, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell24 to cell25, model: MachineEdge
+        Edge: SE, From cell24 to cell35, model: MachineEdge
+        Edge: S, From cell24 to cell34, model: MachineEdge
+        Edge: SW, From cell24 to cell33, model: MachineEdge
+        Edge: W, From cell24 to cell23, model: MachineEdge
+        Edge: NW, From cell24 to cell13, model: MachineEdge
+        Edge: N, From cell24 to cell14, model: MachineEdge
+        Edge: NE, From cell24 to cell15, model: MachineEdge
+
+Vertex cell25, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell25 to cell26, model: MachineEdge
+        Edge: SE, From cell25 to cell36, model: MachineEdge
+        Edge: S, From cell25 to cell35, model: MachineEdge
+        Edge: SW, From cell25 to cell34, model: MachineEdge
+        Edge: W, From cell25 to cell24, model: MachineEdge
+        Edge: NW, From cell25 to cell14, model: MachineEdge
+        Edge: N, From cell25 to cell15, model: MachineEdge
+        Edge: NE, From cell25 to cell16, model: MachineEdge
+
+Vertex cell26, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell26 to cell27, model: MachineEdge
+        Edge: SE, From cell26 to cell37, model: MachineEdge
+        Edge: S, From cell26 to cell36, model: MachineEdge
+        Edge: SW, From cell26 to cell35, model: MachineEdge
+        Edge: W, From cell26 to cell25, model: MachineEdge
+        Edge: NW, From cell26 to cell15, model: MachineEdge
+        Edge: N, From cell26 to cell16, model: MachineEdge
+        Edge: NE, From cell26 to cell17, model: MachineEdge
+
+Vertex cell27, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell27 to cell28, model: MachineEdge
+        Edge: SE, From cell27 to cell38, model: MachineEdge
+        Edge: S, From cell27 to cell37, model: MachineEdge
+        Edge: SW, From cell27 to cell36, model: MachineEdge
+        Edge: W, From cell27 to cell26, model: MachineEdge
+        Edge: NW, From cell27 to cell16, model: MachineEdge
+        Edge: N, From cell27 to cell17, model: MachineEdge
+        Edge: NE, From cell27 to cell18, model: MachineEdge
+
+Vertex cell28, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell28 to cell29, model: MachineEdge
+        Edge: SE, From cell28 to cell39, model: MachineEdge
+        Edge: S, From cell28 to cell38, model: MachineEdge
+        Edge: SW, From cell28 to cell37, model: MachineEdge
+        Edge: W, From cell28 to cell27, model: MachineEdge
+        Edge: NW, From cell28 to cell17, model: MachineEdge
+        Edge: N, From cell28 to cell18, model: MachineEdge
+        Edge: NE, From cell28 to cell19, model: MachineEdge
+
+Vertex cell29, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell29 to cell20, model: MachineEdge
+        Edge: SE, From cell29 to cell30, model: MachineEdge
+        Edge: S, From cell29 to cell39, model: MachineEdge
+        Edge: SW, From cell29 to cell38, model: MachineEdge
+        Edge: W, From cell29 to cell28, model: MachineEdge
+        Edge: NW, From cell29 to cell18, model: MachineEdge
+        Edge: N, From cell29 to cell19, model: MachineEdge
+        Edge: NE, From cell29 to cell10, model: MachineEdge
+
+Vertex cell30, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell30 to cell31, model: MachineEdge
+        Edge: SE, From cell30 to cell41, model: MachineEdge
+        Edge: S, From cell30 to cell40, model: MachineEdge
+        Edge: SW, From cell30 to cell49, model: MachineEdge
+        Edge: W, From cell30 to cell39, model: MachineEdge
+        Edge: NW, From cell30 to cell29, model: MachineEdge
+        Edge: N, From cell30 to cell20, model: MachineEdge
+        Edge: NE, From cell30 to cell21, model: MachineEdge
+
+Vertex cell31, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell31 to cell32, model: MachineEdge
+        Edge: SE, From cell31 to cell42, model: MachineEdge
+        Edge: S, From cell31 to cell41, model: MachineEdge
+        Edge: SW, From cell31 to cell40, model: MachineEdge
+        Edge: W, From cell31 to cell30, model: MachineEdge
+        Edge: NW, From cell31 to cell20, model: MachineEdge
+        Edge: N, From cell31 to cell21, model: MachineEdge
+        Edge: NE, From cell31 to cell22, model: MachineEdge
+
+Vertex cell32, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell32 to cell33, model: MachineEdge
+        Edge: SE, From cell32 to cell43, model: MachineEdge
+        Edge: S, From cell32 to cell42, model: MachineEdge
+        Edge: SW, From cell32 to cell41, model: MachineEdge
+        Edge: W, From cell32 to cell31, model: MachineEdge
+        Edge: NW, From cell32 to cell21, model: MachineEdge
+        Edge: N, From cell32 to cell22, model: MachineEdge
+        Edge: NE, From cell32 to cell23, model: MachineEdge
+
+Vertex cell33, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell33 to cell34, model: MachineEdge
+        Edge: SE, From cell33 to cell44, model: MachineEdge
+        Edge: S, From cell33 to cell43, model: MachineEdge
+        Edge: SW, From cell33 to cell42, model: MachineEdge
+        Edge: W, From cell33 to cell32, model: MachineEdge
+        Edge: NW, From cell33 to cell22, model: MachineEdge
+        Edge: N, From cell33 to cell23, model: MachineEdge
+        Edge: NE, From cell33 to cell24, model: MachineEdge
+
+Vertex cell34, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell34 to cell35, model: MachineEdge
+        Edge: SE, From cell34 to cell45, model: MachineEdge
+        Edge: S, From cell34 to cell44, model: MachineEdge
+        Edge: SW, From cell34 to cell43, model: MachineEdge
+        Edge: W, From cell34 to cell33, model: MachineEdge
+        Edge: NW, From cell34 to cell23, model: MachineEdge
+        Edge: N, From cell34 to cell24, model: MachineEdge
+        Edge: NE, From cell34 to cell25, model: MachineEdge
+
+Vertex cell35, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell35 to cell36, model: MachineEdge
+        Edge: SE, From cell35 to cell46, model: MachineEdge
+        Edge: S, From cell35 to cell45, model: MachineEdge
+        Edge: SW, From cell35 to cell44, model: MachineEdge
+        Edge: W, From cell35 to cell34, model: MachineEdge
+        Edge: NW, From cell35 to cell24, model: MachineEdge
+        Edge: N, From cell35 to cell25, model: MachineEdge
+        Edge: NE, From cell35 to cell26, model: MachineEdge
+
+Vertex cell36, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell36 to cell37, model: MachineEdge
+        Edge: SE, From cell36 to cell47, model: MachineEdge
+        Edge: S, From cell36 to cell46, model: MachineEdge
+        Edge: SW, From cell36 to cell45, model: MachineEdge
+        Edge: W, From cell36 to cell35, model: MachineEdge
+        Edge: NW, From cell36 to cell25, model: MachineEdge
+        Edge: N, From cell36 to cell26, model: MachineEdge
+        Edge: NE, From cell36 to cell27, model: MachineEdge
+
+Vertex cell37, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell37 to cell38, model: MachineEdge
+        Edge: SE, From cell37 to cell48, model: MachineEdge
+        Edge: S, From cell37 to cell47, model: MachineEdge
+        Edge: SW, From cell37 to cell46, model: MachineEdge
+        Edge: W, From cell37 to cell36, model: MachineEdge
+        Edge: NW, From cell37 to cell26, model: MachineEdge
+        Edge: N, From cell37 to cell27, model: MachineEdge
+        Edge: NE, From cell37 to cell28, model: MachineEdge
+
+Vertex cell38, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell38 to cell39, model: MachineEdge
+        Edge: SE, From cell38 to cell49, model: MachineEdge
+        Edge: S, From cell38 to cell48, model: MachineEdge
+        Edge: SW, From cell38 to cell47, model: MachineEdge
+        Edge: W, From cell38 to cell37, model: MachineEdge
+        Edge: NW, From cell38 to cell27, model: MachineEdge
+        Edge: N, From cell38 to cell28, model: MachineEdge
+        Edge: NE, From cell38 to cell29, model: MachineEdge
+
+Vertex cell39, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell39 to cell30, model: MachineEdge
+        Edge: SE, From cell39 to cell40, model: MachineEdge
+        Edge: S, From cell39 to cell49, model: MachineEdge
+        Edge: SW, From cell39 to cell48, model: MachineEdge
+        Edge: W, From cell39 to cell38, model: MachineEdge
+        Edge: NW, From cell39 to cell28, model: MachineEdge
+        Edge: N, From cell39 to cell29, model: MachineEdge
+        Edge: NE, From cell39 to cell20, model: MachineEdge
+
+Vertex cell40, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell40 to cell41, model: MachineEdge
+        Edge: SE, From cell40 to cell51, model: MachineEdge
+        Edge: S, From cell40 to cell50, model: MachineEdge
+        Edge: SW, From cell40 to cell59, model: MachineEdge
+        Edge: W, From cell40 to cell49, model: MachineEdge
+        Edge: NW, From cell40 to cell39, model: MachineEdge
+        Edge: N, From cell40 to cell30, model: MachineEdge
+        Edge: NE, From cell40 to cell31, model: MachineEdge
+
+Vertex cell41, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell41 to cell42, model: MachineEdge
+        Edge: SE, From cell41 to cell52, model: MachineEdge
+        Edge: S, From cell41 to cell51, model: MachineEdge
+        Edge: SW, From cell41 to cell50, model: MachineEdge
+        Edge: W, From cell41 to cell40, model: MachineEdge
+        Edge: NW, From cell41 to cell30, model: MachineEdge
+        Edge: N, From cell41 to cell31, model: MachineEdge
+        Edge: NE, From cell41 to cell32, model: MachineEdge
+
+Vertex cell42, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell42 to cell43, model: MachineEdge
+        Edge: SE, From cell42 to cell53, model: MachineEdge
+        Edge: S, From cell42 to cell52, model: MachineEdge
+        Edge: SW, From cell42 to cell51, model: MachineEdge
+        Edge: W, From cell42 to cell41, model: MachineEdge
+        Edge: NW, From cell42 to cell31, model: MachineEdge
+        Edge: N, From cell42 to cell32, model: MachineEdge
+        Edge: NE, From cell42 to cell33, model: MachineEdge
+
+Vertex cell43, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell43 to cell44, model: MachineEdge
+        Edge: SE, From cell43 to cell54, model: MachineEdge
+        Edge: S, From cell43 to cell53, model: MachineEdge
+        Edge: SW, From cell43 to cell52, model: MachineEdge
+        Edge: W, From cell43 to cell42, model: MachineEdge
+        Edge: NW, From cell43 to cell32, model: MachineEdge
+        Edge: N, From cell43 to cell33, model: MachineEdge
+        Edge: NE, From cell43 to cell34, model: MachineEdge
+
+Vertex cell44, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell44 to cell45, model: MachineEdge
+        Edge: SE, From cell44 to cell55, model: MachineEdge
+        Edge: S, From cell44 to cell54, model: MachineEdge
+        Edge: SW, From cell44 to cell53, model: MachineEdge
+        Edge: W, From cell44 to cell43, model: MachineEdge
+        Edge: NW, From cell44 to cell33, model: MachineEdge
+        Edge: N, From cell44 to cell34, model: MachineEdge
+        Edge: NE, From cell44 to cell35, model: MachineEdge
+
+Vertex cell45, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell45 to cell46, model: MachineEdge
+        Edge: SE, From cell45 to cell56, model: MachineEdge
+        Edge: S, From cell45 to cell55, model: MachineEdge
+        Edge: SW, From cell45 to cell54, model: MachineEdge
+        Edge: W, From cell45 to cell44, model: MachineEdge
+        Edge: NW, From cell45 to cell34, model: MachineEdge
+        Edge: N, From cell45 to cell35, model: MachineEdge
+        Edge: NE, From cell45 to cell36, model: MachineEdge
+
+Vertex cell46, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell46 to cell47, model: MachineEdge
+        Edge: SE, From cell46 to cell57, model: MachineEdge
+        Edge: S, From cell46 to cell56, model: MachineEdge
+        Edge: SW, From cell46 to cell55, model: MachineEdge
+        Edge: W, From cell46 to cell45, model: MachineEdge
+        Edge: NW, From cell46 to cell35, model: MachineEdge
+        Edge: N, From cell46 to cell36, model: MachineEdge
+        Edge: NE, From cell46 to cell37, model: MachineEdge
+
+Vertex cell47, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell47 to cell48, model: MachineEdge
+        Edge: SE, From cell47 to cell58, model: MachineEdge
+        Edge: S, From cell47 to cell57, model: MachineEdge
+        Edge: SW, From cell47 to cell56, model: MachineEdge
+        Edge: W, From cell47 to cell46, model: MachineEdge
+        Edge: NW, From cell47 to cell36, model: MachineEdge
+        Edge: N, From cell47 to cell37, model: MachineEdge
+        Edge: NE, From cell47 to cell38, model: MachineEdge
+
+Vertex cell48, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell48 to cell49, model: MachineEdge
+        Edge: SE, From cell48 to cell59, model: MachineEdge
+        Edge: S, From cell48 to cell58, model: MachineEdge
+        Edge: SW, From cell48 to cell57, model: MachineEdge
+        Edge: W, From cell48 to cell47, model: MachineEdge
+        Edge: NW, From cell48 to cell37, model: MachineEdge
+        Edge: N, From cell48 to cell38, model: MachineEdge
+        Edge: NE, From cell48 to cell39, model: MachineEdge
+
+Vertex cell49, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell49 to cell40, model: MachineEdge
+        Edge: SE, From cell49 to cell50, model: MachineEdge
+        Edge: S, From cell49 to cell59, model: MachineEdge
+        Edge: SW, From cell49 to cell58, model: MachineEdge
+        Edge: W, From cell49 to cell48, model: MachineEdge
+        Edge: NW, From cell49 to cell38, model: MachineEdge
+        Edge: N, From cell49 to cell39, model: MachineEdge
+        Edge: NE, From cell49 to cell30, model: MachineEdge
+
+Vertex cell50, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell50 to cell51, model: MachineEdge
+        Edge: SE, From cell50 to cell61, model: MachineEdge
+        Edge: S, From cell50 to cell60, model: MachineEdge
+        Edge: SW, From cell50 to cell69, model: MachineEdge
+        Edge: W, From cell50 to cell59, model: MachineEdge
+        Edge: NW, From cell50 to cell49, model: MachineEdge
+        Edge: N, From cell50 to cell40, model: MachineEdge
+        Edge: NE, From cell50 to cell41, model: MachineEdge
+
+Vertex cell51, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell51 to cell52, model: MachineEdge
+        Edge: SE, From cell51 to cell62, model: MachineEdge
+        Edge: S, From cell51 to cell61, model: MachineEdge
+        Edge: SW, From cell51 to cell60, model: MachineEdge
+        Edge: W, From cell51 to cell50, model: MachineEdge
+        Edge: NW, From cell51 to cell40, model: MachineEdge
+        Edge: N, From cell51 to cell41, model: MachineEdge
+        Edge: NE, From cell51 to cell42, model: MachineEdge
+
+Vertex cell52, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell52 to cell53, model: MachineEdge
+        Edge: SE, From cell52 to cell63, model: MachineEdge
+        Edge: S, From cell52 to cell62, model: MachineEdge
+        Edge: SW, From cell52 to cell61, model: MachineEdge
+        Edge: W, From cell52 to cell51, model: MachineEdge
+        Edge: NW, From cell52 to cell41, model: MachineEdge
+        Edge: N, From cell52 to cell42, model: MachineEdge
+        Edge: NE, From cell52 to cell43, model: MachineEdge
+
+Vertex cell53, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell53 to cell54, model: MachineEdge
+        Edge: SE, From cell53 to cell64, model: MachineEdge
+        Edge: S, From cell53 to cell63, model: MachineEdge
+        Edge: SW, From cell53 to cell62, model: MachineEdge
+        Edge: W, From cell53 to cell52, model: MachineEdge
+        Edge: NW, From cell53 to cell42, model: MachineEdge
+        Edge: N, From cell53 to cell43, model: MachineEdge
+        Edge: NE, From cell53 to cell44, model: MachineEdge
+
+Vertex cell54, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell54 to cell55, model: MachineEdge
+        Edge: SE, From cell54 to cell65, model: MachineEdge
+        Edge: S, From cell54 to cell64, model: MachineEdge
+        Edge: SW, From cell54 to cell63, model: MachineEdge
+        Edge: W, From cell54 to cell53, model: MachineEdge
+        Edge: NW, From cell54 to cell43, model: MachineEdge
+        Edge: N, From cell54 to cell44, model: MachineEdge
+        Edge: NE, From cell54 to cell45, model: MachineEdge
+
+Vertex cell55, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell55 to cell56, model: MachineEdge
+        Edge: SE, From cell55 to cell66, model: MachineEdge
+        Edge: S, From cell55 to cell65, model: MachineEdge
+        Edge: SW, From cell55 to cell64, model: MachineEdge
+        Edge: W, From cell55 to cell54, model: MachineEdge
+        Edge: NW, From cell55 to cell44, model: MachineEdge
+        Edge: N, From cell55 to cell45, model: MachineEdge
+        Edge: NE, From cell55 to cell46, model: MachineEdge
+
+Vertex cell56, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell56 to cell57, model: MachineEdge
+        Edge: SE, From cell56 to cell67, model: MachineEdge
+        Edge: S, From cell56 to cell66, model: MachineEdge
+        Edge: SW, From cell56 to cell65, model: MachineEdge
+        Edge: W, From cell56 to cell55, model: MachineEdge
+        Edge: NW, From cell56 to cell45, model: MachineEdge
+        Edge: N, From cell56 to cell46, model: MachineEdge
+        Edge: NE, From cell56 to cell47, model: MachineEdge
+
+Vertex cell57, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell57 to cell58, model: MachineEdge
+        Edge: SE, From cell57 to cell68, model: MachineEdge
+        Edge: S, From cell57 to cell67, model: MachineEdge
+        Edge: SW, From cell57 to cell66, model: MachineEdge
+        Edge: W, From cell57 to cell56, model: MachineEdge
+        Edge: NW, From cell57 to cell46, model: MachineEdge
+        Edge: N, From cell57 to cell47, model: MachineEdge
+        Edge: NE, From cell57 to cell48, model: MachineEdge
+
+Vertex cell58, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell58 to cell59, model: MachineEdge
+        Edge: SE, From cell58 to cell69, model: MachineEdge
+        Edge: S, From cell58 to cell68, model: MachineEdge
+        Edge: SW, From cell58 to cell67, model: MachineEdge
+        Edge: W, From cell58 to cell57, model: MachineEdge
+        Edge: NW, From cell58 to cell47, model: MachineEdge
+        Edge: N, From cell58 to cell48, model: MachineEdge
+        Edge: NE, From cell58 to cell49, model: MachineEdge
+
+Vertex cell59, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell59 to cell50, model: MachineEdge
+        Edge: SE, From cell59 to cell60, model: MachineEdge
+        Edge: S, From cell59 to cell69, model: MachineEdge
+        Edge: SW, From cell59 to cell68, model: MachineEdge
+        Edge: W, From cell59 to cell58, model: MachineEdge
+        Edge: NW, From cell59 to cell48, model: MachineEdge
+        Edge: N, From cell59 to cell49, model: MachineEdge
+        Edge: NE, From cell59 to cell40, model: MachineEdge
+
+Vertex cell60, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell60 to cell61, model: MachineEdge
+        Edge: SE, From cell60 to cell71, model: MachineEdge
+        Edge: S, From cell60 to cell70, model: MachineEdge
+        Edge: SW, From cell60 to cell79, model: MachineEdge
+        Edge: W, From cell60 to cell69, model: MachineEdge
+        Edge: NW, From cell60 to cell59, model: MachineEdge
+        Edge: N, From cell60 to cell50, model: MachineEdge
+        Edge: NE, From cell60 to cell51, model: MachineEdge
+
+Vertex cell61, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell61 to cell62, model: MachineEdge
+        Edge: SE, From cell61 to cell72, model: MachineEdge
+        Edge: S, From cell61 to cell71, model: MachineEdge
+        Edge: SW, From cell61 to cell70, model: MachineEdge
+        Edge: W, From cell61 to cell60, model: MachineEdge
+        Edge: NW, From cell61 to cell50, model: MachineEdge
+        Edge: N, From cell61 to cell51, model: MachineEdge
+        Edge: NE, From cell61 to cell52, model: MachineEdge
+
+Vertex cell62, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell62 to cell63, model: MachineEdge
+        Edge: SE, From cell62 to cell73, model: MachineEdge
+        Edge: S, From cell62 to cell72, model: MachineEdge
+        Edge: SW, From cell62 to cell71, model: MachineEdge
+        Edge: W, From cell62 to cell61, model: MachineEdge
+        Edge: NW, From cell62 to cell51, model: MachineEdge
+        Edge: N, From cell62 to cell52, model: MachineEdge
+        Edge: NE, From cell62 to cell53, model: MachineEdge
+
+Vertex cell63, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell63 to cell64, model: MachineEdge
+        Edge: SE, From cell63 to cell74, model: MachineEdge
+        Edge: S, From cell63 to cell73, model: MachineEdge
+        Edge: SW, From cell63 to cell72, model: MachineEdge
+        Edge: W, From cell63 to cell62, model: MachineEdge
+        Edge: NW, From cell63 to cell52, model: MachineEdge
+        Edge: N, From cell63 to cell53, model: MachineEdge
+        Edge: NE, From cell63 to cell54, model: MachineEdge
+
+Vertex cell64, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell64 to cell65, model: MachineEdge
+        Edge: SE, From cell64 to cell75, model: MachineEdge
+        Edge: S, From cell64 to cell74, model: MachineEdge
+        Edge: SW, From cell64 to cell73, model: MachineEdge
+        Edge: W, From cell64 to cell63, model: MachineEdge
+        Edge: NW, From cell64 to cell53, model: MachineEdge
+        Edge: N, From cell64 to cell54, model: MachineEdge
+        Edge: NE, From cell64 to cell55, model: MachineEdge
+
+Vertex cell65, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell65 to cell66, model: MachineEdge
+        Edge: SE, From cell65 to cell76, model: MachineEdge
+        Edge: S, From cell65 to cell75, model: MachineEdge
+        Edge: SW, From cell65 to cell74, model: MachineEdge
+        Edge: W, From cell65 to cell64, model: MachineEdge
+        Edge: NW, From cell65 to cell54, model: MachineEdge
+        Edge: N, From cell65 to cell55, model: MachineEdge
+        Edge: NE, From cell65 to cell56, model: MachineEdge
+
+Vertex cell66, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell66 to cell67, model: MachineEdge
+        Edge: SE, From cell66 to cell77, model: MachineEdge
+        Edge: S, From cell66 to cell76, model: MachineEdge
+        Edge: SW, From cell66 to cell75, model: MachineEdge
+        Edge: W, From cell66 to cell65, model: MachineEdge
+        Edge: NW, From cell66 to cell55, model: MachineEdge
+        Edge: N, From cell66 to cell56, model: MachineEdge
+        Edge: NE, From cell66 to cell57, model: MachineEdge
+
+Vertex cell67, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell67 to cell68, model: MachineEdge
+        Edge: SE, From cell67 to cell78, model: MachineEdge
+        Edge: S, From cell67 to cell77, model: MachineEdge
+        Edge: SW, From cell67 to cell76, model: MachineEdge
+        Edge: W, From cell67 to cell66, model: MachineEdge
+        Edge: NW, From cell67 to cell56, model: MachineEdge
+        Edge: N, From cell67 to cell57, model: MachineEdge
+        Edge: NE, From cell67 to cell58, model: MachineEdge
+
+Vertex cell68, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell68 to cell69, model: MachineEdge
+        Edge: SE, From cell68 to cell79, model: MachineEdge
+        Edge: S, From cell68 to cell78, model: MachineEdge
+        Edge: SW, From cell68 to cell77, model: MachineEdge
+        Edge: W, From cell68 to cell67, model: MachineEdge
+        Edge: NW, From cell68 to cell57, model: MachineEdge
+        Edge: N, From cell68 to cell58, model: MachineEdge
+        Edge: NE, From cell68 to cell59, model: MachineEdge
+
+Vertex cell69, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell69 to cell60, model: MachineEdge
+        Edge: SE, From cell69 to cell70, model: MachineEdge
+        Edge: S, From cell69 to cell79, model: MachineEdge
+        Edge: SW, From cell69 to cell78, model: MachineEdge
+        Edge: W, From cell69 to cell68, model: MachineEdge
+        Edge: NW, From cell69 to cell58, model: MachineEdge
+        Edge: N, From cell69 to cell59, model: MachineEdge
+        Edge: NE, From cell69 to cell50, model: MachineEdge
+
+Vertex cell70, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell70 to cell71, model: MachineEdge
+        Edge: SE, From cell70 to cell81, model: MachineEdge
+        Edge: S, From cell70 to cell80, model: MachineEdge
+        Edge: SW, From cell70 to cell89, model: MachineEdge
+        Edge: W, From cell70 to cell79, model: MachineEdge
+        Edge: NW, From cell70 to cell69, model: MachineEdge
+        Edge: N, From cell70 to cell60, model: MachineEdge
+        Edge: NE, From cell70 to cell61, model: MachineEdge
+
+Vertex cell71, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell71 to cell72, model: MachineEdge
+        Edge: SE, From cell71 to cell82, model: MachineEdge
+        Edge: S, From cell71 to cell81, model: MachineEdge
+        Edge: SW, From cell71 to cell80, model: MachineEdge
+        Edge: W, From cell71 to cell70, model: MachineEdge
+        Edge: NW, From cell71 to cell60, model: MachineEdge
+        Edge: N, From cell71 to cell61, model: MachineEdge
+        Edge: NE, From cell71 to cell62, model: MachineEdge
+
+Vertex cell72, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell72 to cell73, model: MachineEdge
+        Edge: SE, From cell72 to cell83, model: MachineEdge
+        Edge: S, From cell72 to cell82, model: MachineEdge
+        Edge: SW, From cell72 to cell81, model: MachineEdge
+        Edge: W, From cell72 to cell71, model: MachineEdge
+        Edge: NW, From cell72 to cell61, model: MachineEdge
+        Edge: N, From cell72 to cell62, model: MachineEdge
+        Edge: NE, From cell72 to cell63, model: MachineEdge
+
+Vertex cell73, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell73 to cell74, model: MachineEdge
+        Edge: SE, From cell73 to cell84, model: MachineEdge
+        Edge: S, From cell73 to cell83, model: MachineEdge
+        Edge: SW, From cell73 to cell82, model: MachineEdge
+        Edge: W, From cell73 to cell72, model: MachineEdge
+        Edge: NW, From cell73 to cell62, model: MachineEdge
+        Edge: N, From cell73 to cell63, model: MachineEdge
+        Edge: NE, From cell73 to cell64, model: MachineEdge
+
+Vertex cell74, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell74 to cell75, model: MachineEdge
+        Edge: SE, From cell74 to cell85, model: MachineEdge
+        Edge: S, From cell74 to cell84, model: MachineEdge
+        Edge: SW, From cell74 to cell83, model: MachineEdge
+        Edge: W, From cell74 to cell73, model: MachineEdge
+        Edge: NW, From cell74 to cell63, model: MachineEdge
+        Edge: N, From cell74 to cell64, model: MachineEdge
+        Edge: NE, From cell74 to cell65, model: MachineEdge
+
+Vertex cell75, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell75 to cell76, model: MachineEdge
+        Edge: SE, From cell75 to cell86, model: MachineEdge
+        Edge: S, From cell75 to cell85, model: MachineEdge
+        Edge: SW, From cell75 to cell84, model: MachineEdge
+        Edge: W, From cell75 to cell74, model: MachineEdge
+        Edge: NW, From cell75 to cell64, model: MachineEdge
+        Edge: N, From cell75 to cell65, model: MachineEdge
+        Edge: NE, From cell75 to cell66, model: MachineEdge
+
+Vertex cell76, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell76 to cell77, model: MachineEdge
+        Edge: SE, From cell76 to cell87, model: MachineEdge
+        Edge: S, From cell76 to cell86, model: MachineEdge
+        Edge: SW, From cell76 to cell85, model: MachineEdge
+        Edge: W, From cell76 to cell75, model: MachineEdge
+        Edge: NW, From cell76 to cell65, model: MachineEdge
+        Edge: N, From cell76 to cell66, model: MachineEdge
+        Edge: NE, From cell76 to cell67, model: MachineEdge
+
+Vertex cell77, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell77 to cell78, model: MachineEdge
+        Edge: SE, From cell77 to cell88, model: MachineEdge
+        Edge: S, From cell77 to cell87, model: MachineEdge
+        Edge: SW, From cell77 to cell86, model: MachineEdge
+        Edge: W, From cell77 to cell76, model: MachineEdge
+        Edge: NW, From cell77 to cell66, model: MachineEdge
+        Edge: N, From cell77 to cell67, model: MachineEdge
+        Edge: NE, From cell77 to cell68, model: MachineEdge
+
+Vertex cell78, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell78 to cell79, model: MachineEdge
+        Edge: SE, From cell78 to cell89, model: MachineEdge
+        Edge: S, From cell78 to cell88, model: MachineEdge
+        Edge: SW, From cell78 to cell87, model: MachineEdge
+        Edge: W, From cell78 to cell77, model: MachineEdge
+        Edge: NW, From cell78 to cell67, model: MachineEdge
+        Edge: N, From cell78 to cell68, model: MachineEdge
+        Edge: NE, From cell78 to cell69, model: MachineEdge
+
+Vertex cell79, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell79 to cell70, model: MachineEdge
+        Edge: SE, From cell79 to cell80, model: MachineEdge
+        Edge: S, From cell79 to cell89, model: MachineEdge
+        Edge: SW, From cell79 to cell88, model: MachineEdge
+        Edge: W, From cell79 to cell78, model: MachineEdge
+        Edge: NW, From cell79 to cell68, model: MachineEdge
+        Edge: N, From cell79 to cell69, model: MachineEdge
+        Edge: NE, From cell79 to cell60, model: MachineEdge
+
+Vertex cell80, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell80 to cell81, model: MachineEdge
+        Edge: SE, From cell80 to cell91, model: MachineEdge
+        Edge: S, From cell80 to cell90, model: MachineEdge
+        Edge: SW, From cell80 to cell99, model: MachineEdge
+        Edge: W, From cell80 to cell89, model: MachineEdge
+        Edge: NW, From cell80 to cell79, model: MachineEdge
+        Edge: N, From cell80 to cell70, model: MachineEdge
+        Edge: NE, From cell80 to cell71, model: MachineEdge
+
+Vertex cell81, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell81 to cell82, model: MachineEdge
+        Edge: SE, From cell81 to cell92, model: MachineEdge
+        Edge: S, From cell81 to cell91, model: MachineEdge
+        Edge: SW, From cell81 to cell90, model: MachineEdge
+        Edge: W, From cell81 to cell80, model: MachineEdge
+        Edge: NW, From cell81 to cell70, model: MachineEdge
+        Edge: N, From cell81 to cell71, model: MachineEdge
+        Edge: NE, From cell81 to cell72, model: MachineEdge
+
+Vertex cell82, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell82 to cell83, model: MachineEdge
+        Edge: SE, From cell82 to cell93, model: MachineEdge
+        Edge: S, From cell82 to cell92, model: MachineEdge
+        Edge: SW, From cell82 to cell91, model: MachineEdge
+        Edge: W, From cell82 to cell81, model: MachineEdge
+        Edge: NW, From cell82 to cell71, model: MachineEdge
+        Edge: N, From cell82 to cell72, model: MachineEdge
+        Edge: NE, From cell82 to cell73, model: MachineEdge
+
+Vertex cell83, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell83 to cell84, model: MachineEdge
+        Edge: SE, From cell83 to cell94, model: MachineEdge
+        Edge: S, From cell83 to cell93, model: MachineEdge
+        Edge: SW, From cell83 to cell92, model: MachineEdge
+        Edge: W, From cell83 to cell82, model: MachineEdge
+        Edge: NW, From cell83 to cell72, model: MachineEdge
+        Edge: N, From cell83 to cell73, model: MachineEdge
+        Edge: NE, From cell83 to cell74, model: MachineEdge
+
+Vertex cell84, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell84 to cell85, model: MachineEdge
+        Edge: SE, From cell84 to cell95, model: MachineEdge
+        Edge: S, From cell84 to cell94, model: MachineEdge
+        Edge: SW, From cell84 to cell93, model: MachineEdge
+        Edge: W, From cell84 to cell83, model: MachineEdge
+        Edge: NW, From cell84 to cell73, model: MachineEdge
+        Edge: N, From cell84 to cell74, model: MachineEdge
+        Edge: NE, From cell84 to cell75, model: MachineEdge
+
+Vertex cell85, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell85 to cell86, model: MachineEdge
+        Edge: SE, From cell85 to cell96, model: MachineEdge
+        Edge: S, From cell85 to cell95, model: MachineEdge
+        Edge: SW, From cell85 to cell94, model: MachineEdge
+        Edge: W, From cell85 to cell84, model: MachineEdge
+        Edge: NW, From cell85 to cell74, model: MachineEdge
+        Edge: N, From cell85 to cell75, model: MachineEdge
+        Edge: NE, From cell85 to cell76, model: MachineEdge
+
+Vertex cell86, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell86 to cell87, model: MachineEdge
+        Edge: SE, From cell86 to cell97, model: MachineEdge
+        Edge: S, From cell86 to cell96, model: MachineEdge
+        Edge: SW, From cell86 to cell95, model: MachineEdge
+        Edge: W, From cell86 to cell85, model: MachineEdge
+        Edge: NW, From cell86 to cell75, model: MachineEdge
+        Edge: N, From cell86 to cell76, model: MachineEdge
+        Edge: NE, From cell86 to cell77, model: MachineEdge
+
+Vertex cell87, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell87 to cell88, model: MachineEdge
+        Edge: SE, From cell87 to cell98, model: MachineEdge
+        Edge: S, From cell87 to cell97, model: MachineEdge
+        Edge: SW, From cell87 to cell96, model: MachineEdge
+        Edge: W, From cell87 to cell86, model: MachineEdge
+        Edge: NW, From cell87 to cell76, model: MachineEdge
+        Edge: N, From cell87 to cell77, model: MachineEdge
+        Edge: NE, From cell87 to cell78, model: MachineEdge
+
+Vertex cell88, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell88 to cell89, model: MachineEdge
+        Edge: SE, From cell88 to cell99, model: MachineEdge
+        Edge: S, From cell88 to cell98, model: MachineEdge
+        Edge: SW, From cell88 to cell97, model: MachineEdge
+        Edge: W, From cell88 to cell87, model: MachineEdge
+        Edge: NW, From cell88 to cell77, model: MachineEdge
+        Edge: N, From cell88 to cell78, model: MachineEdge
+        Edge: NE, From cell88 to cell79, model: MachineEdge
+
+Vertex cell89, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell89 to cell80, model: MachineEdge
+        Edge: SE, From cell89 to cell90, model: MachineEdge
+        Edge: S, From cell89 to cell99, model: MachineEdge
+        Edge: SW, From cell89 to cell98, model: MachineEdge
+        Edge: W, From cell89 to cell88, model: MachineEdge
+        Edge: NW, From cell89 to cell78, model: MachineEdge
+        Edge: N, From cell89 to cell79, model: MachineEdge
+        Edge: NE, From cell89 to cell70, model: MachineEdge
+
+Vertex cell90, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell90 to cell91, model: MachineEdge
+        Edge: SE, From cell90 to cell1, model: MachineEdge
+        Edge: S, From cell90 to cell0, model: MachineEdge
+        Edge: SW, From cell90 to cell9, model: MachineEdge
+        Edge: W, From cell90 to cell99, model: MachineEdge
+        Edge: NW, From cell90 to cell89, model: MachineEdge
+        Edge: N, From cell90 to cell80, model: MachineEdge
+        Edge: NE, From cell90 to cell81, model: MachineEdge
+
+Vertex cell91, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell91 to cell92, model: MachineEdge
+        Edge: SE, From cell91 to cell2, model: MachineEdge
+        Edge: S, From cell91 to cell1, model: MachineEdge
+        Edge: SW, From cell91 to cell0, model: MachineEdge
+        Edge: W, From cell91 to cell90, model: MachineEdge
+        Edge: NW, From cell91 to cell80, model: MachineEdge
+        Edge: N, From cell91 to cell81, model: MachineEdge
+        Edge: NE, From cell91 to cell82, model: MachineEdge
+
+Vertex cell92, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell92 to cell93, model: MachineEdge
+        Edge: SE, From cell92 to cell3, model: MachineEdge
+        Edge: S, From cell92 to cell2, model: MachineEdge
+        Edge: SW, From cell92 to cell1, model: MachineEdge
+        Edge: W, From cell92 to cell91, model: MachineEdge
+        Edge: NW, From cell92 to cell81, model: MachineEdge
+        Edge: N, From cell92 to cell82, model: MachineEdge
+        Edge: NE, From cell92 to cell83, model: MachineEdge
+
+Vertex cell93, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell93 to cell94, model: MachineEdge
+        Edge: SE, From cell93 to cell4, model: MachineEdge
+        Edge: S, From cell93 to cell3, model: MachineEdge
+        Edge: SW, From cell93 to cell2, model: MachineEdge
+        Edge: W, From cell93 to cell92, model: MachineEdge
+        Edge: NW, From cell93 to cell82, model: MachineEdge
+        Edge: N, From cell93 to cell83, model: MachineEdge
+        Edge: NE, From cell93 to cell84, model: MachineEdge
+
+Vertex cell94, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell94 to cell95, model: MachineEdge
+        Edge: SE, From cell94 to cell5, model: MachineEdge
+        Edge: S, From cell94 to cell4, model: MachineEdge
+        Edge: SW, From cell94 to cell3, model: MachineEdge
+        Edge: W, From cell94 to cell93, model: MachineEdge
+        Edge: NW, From cell94 to cell83, model: MachineEdge
+        Edge: N, From cell94 to cell84, model: MachineEdge
+        Edge: NE, From cell94 to cell85, model: MachineEdge
+
+Vertex cell95, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell95 to cell96, model: MachineEdge
+        Edge: SE, From cell95 to cell6, model: MachineEdge
+        Edge: S, From cell95 to cell5, model: MachineEdge
+        Edge: SW, From cell95 to cell4, model: MachineEdge
+        Edge: W, From cell95 to cell94, model: MachineEdge
+        Edge: NW, From cell95 to cell84, model: MachineEdge
+        Edge: N, From cell95 to cell85, model: MachineEdge
+        Edge: NE, From cell95 to cell86, model: MachineEdge
+
+Vertex cell96, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell96 to cell97, model: MachineEdge
+        Edge: SE, From cell96 to cell7, model: MachineEdge
+        Edge: S, From cell96 to cell6, model: MachineEdge
+        Edge: SW, From cell96 to cell5, model: MachineEdge
+        Edge: W, From cell96 to cell95, model: MachineEdge
+        Edge: NW, From cell96 to cell85, model: MachineEdge
+        Edge: N, From cell96 to cell86, model: MachineEdge
+        Edge: NE, From cell96 to cell87, model: MachineEdge
+
+Vertex cell97, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell97 to cell98, model: MachineEdge
+        Edge: SE, From cell97 to cell8, model: MachineEdge
+        Edge: S, From cell97 to cell7, model: MachineEdge
+        Edge: SW, From cell97 to cell6, model: MachineEdge
+        Edge: W, From cell97 to cell96, model: MachineEdge
+        Edge: NW, From cell97 to cell86, model: MachineEdge
+        Edge: N, From cell97 to cell87, model: MachineEdge
+        Edge: NE, From cell97 to cell88, model: MachineEdge
+
+Vertex cell98, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell98 to cell99, model: MachineEdge
+        Edge: SE, From cell98 to cell9, model: MachineEdge
+        Edge: S, From cell98 to cell8, model: MachineEdge
+        Edge: SW, From cell98 to cell7, model: MachineEdge
+        Edge: W, From cell98 to cell97, model: MachineEdge
+        Edge: NW, From cell98 to cell87, model: MachineEdge
+        Edge: N, From cell98 to cell88, model: MachineEdge
+        Edge: NE, From cell98 to cell89, model: MachineEdge
+
+Vertex cell99, model: LatticeBasicCell
+    Constraints:
+    Outgoing Edge Partitions:
+    Partition STATE:
+        Edge: E, From cell99 to cell90, model: MachineEdge
+        Edge: SE, From cell99 to cell0, model: MachineEdge
+        Edge: S, From cell99 to cell9, model: MachineEdge
+        Edge: SW, From cell99 to cell8, model: MachineEdge
+        Edge: W, From cell99 to cell98, model: MachineEdge
+        Edge: NW, From cell99 to cell88, model: MachineEdge
+        Edge: N, From cell99 to cell89, model: MachineEdge
+        Edge: NE, From cell99 to cell80, model: MachineEdge
+

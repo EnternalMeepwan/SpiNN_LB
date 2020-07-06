@@ -1,0 +1,7 @@
+[INFO] (data_speed_up_packet_gatherer.c: 709): Configuring packet gatherer
+[INFO] (data_specification.c: 78): magic = ad130ad6, version = 1.0
+[INFO] (data_speed_up_packet_gatherer.c: 652): Initialising data out
+[INFO] (data_speed_up_packet_gatherer.c: 671): Initialising data in
+[INFO] (data_speed_up_packet_gatherer.c: 693): receive timeout is 33000us
+[INFO] (data_speed_up_packet_gatherer.c: 715): Starting
+
