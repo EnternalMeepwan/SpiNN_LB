@@ -16,12 +16,8 @@ import math
 import os
 from pacman.model.graphs.machine import MachineEdge
 import spinnaker_graph_front_end as front_end
-from SpiNNakerGraphFrontEnd.spinnaker_graph_front_end.examples.Conways.partitioned_example_b_no_vis_buffer.lattice_basic_cell import LatticeBasicCell
 
-
-
-
-runtime = 50
+runtime = 500
 # machine_time_step = 100
 MAX_X_SIZE_OF_FABRIC = 10
 MAX_Y_SIZE_OF_FABRIC = 10
@@ -57,12 +53,12 @@ def initVelocity(x_pos, y_pos):
         u_x = U_0 * math.tanh(K * (0.75 - y_temp))
 #     print("the u_x of ({}, {}) is {}".format(x_pos, y_pos, u_x))
     u_y = U_0 * delta * math.sin(2 * math.pi * (x_temp + 0.25))
-#     print("the u_y of ({}, {}) is {}".format(x_pos, y_pos, u_y))
+#     print("the u_y of ({}, {}) is {}".format(x_pos, y_pos, u_y))    
     return u_x, u_y
 
 # set up the front end and ask for the detected machines dimensions
 front_end.setup(
-    n_chips_required=n_chips, model_binary_folder=os.path.dirname(os.path.abspath("__file__")))
+    n_chips_required=n_chips, model_binary_folder=os.path.dirname(os.path.abspath("__file__")), machine_time_step=10000)
 
 # figure out if machine can handle simulation
 cores = front_end.get_number_of_available_cores_on_machine()
@@ -140,12 +136,12 @@ for x in range(0, MAX_X_SIZE_OF_FABRIC):
                 vertices[x][y]))
 
 # visualise it in text form (bad but no vis this time)
-for time in range(0, runtime):
+for time in range(0, runtime, 2):
     print("at time {}".format(time))
     output = ""
     for x in range(0, MAX_Y_SIZE_OF_FABRIC):
         for y in range(0, MAX_Y_SIZE_OF_FABRIC):
-            output += "{} ".format(recorded_data[x, y][time])
+            output += "{}{}".format(recorded_data[x, y][time], recorded_data[x, y][time+1])
         output += "\n"
     print(output)
     print("\n\n")
