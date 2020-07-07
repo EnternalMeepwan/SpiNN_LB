@@ -72,11 +72,13 @@ float tau = 0.500384; //(1 + nu * 6) / 2;
 /*! multicast routing keys to communicate with neighbours */
 uint my_key;
 
+/*! the size of the received buffer at this moment*/
+uint current_buffer_size;
+
 /*! buffer used to store spikes */
 static circular_buffer input_buffer;
 static uint32_t current_key;
 static uint32_t current_payload;
-uint32_t received_number = 0;
 
 
 // ! position data
@@ -97,6 +99,9 @@ static uint32_t infinite_run;
 
 // value for turning on and off interrupts
 uint cpsr = 0;
+
+//! receive pacekt chekcing
+uint received_packets[8] = {0,0,0,0,0,0,0,0};
 
 //! human readable definitions of each region in SDRAM
 typedef enum regions_e {
@@ -158,21 +163,32 @@ static inline float int_to_float( int data){
 }
 
 
+
+
+
 void do_safety_check(void) {
     // do a safety check on number of states. Not like we can fix it
     // if we've missed events
     cpsr = spin1_int_disable();
-    if (received_number  != 8){
+    if (! (received_packets[0] && received_packets[1] && received_packets[2] && received_packets[3] && received_packets[4] && received_packets[5] && received_packets[6] && received_packets[7])) {
          log_error("didn't receive the correct number of fi_star");
-         log_error("only received %d states", received_number);
+         rt_error(RTE_SWERR);
     }
     spin1_mode_restore(cpsr);
 }
 
 
 void read_input_buffer(void) {
+    while (circular_buffer_size(input_buffer) < 128) {
+        current_buffer_size = circular_buffer_size(input_buffer);
+        for(uint32_t counter=0; counter < 10000; counter++){
+            //do nothing
+        }
+        log_info("current_buffer_size = %d", current_buffer_size);
+    }
     cpsr = spin1_int_disable();
     circular_buffer_print_buffer(input_buffer);
+
 
     for (uint32_t counter = 0; counter < 64; counter++) {
         bool success_get_key = circular_buffer_get_next(input_buffer, &current_key);
@@ -187,31 +203,36 @@ void read_input_buffer(void) {
             fi_star[0] = fi[0];
             if (base_key == neighbour_keys.n_key && direction == 0) {
                 fi[1] = int_to_float(current_payload);
-                received_number ++;
+                received_packets[0] = 1;
             } else if ( base_key == neighbour_keys.w_key && direction == 1) {
                 fi[2] = int_to_float(current_payload);
-                received_number ++;
+                received_packets[1] = 1;
             } else if ( base_key == neighbour_keys.s_key && direction == 2) {
                 fi[3] = int_to_float(current_payload);
-                received_number ++;
+                received_packets[2] = 1;
             } else if (base_key == neighbour_keys.e_key && direction == 3) {
                 fi[4] = int_to_float(current_payload);
-                received_number ++;
+                received_packets[3] = 1;
             } else if (base_key == neighbour_keys.nw_key && direction == 4) {
                 fi[5] = int_to_float(current_payload);
-                received_number ++;
+                received_packets[4] = 1;
             } else if (base_key == neighbour_keys.sw_key && direction == 5) {
                 fi[6] = int_to_float(current_payload);
-                received_number ++;
+                received_packets[5] = 1;
             } else if (base_key == neighbour_keys.se_key && direction == 6) {
                 fi[7] = int_to_float(current_payload);
-                received_number ++;
+                received_packets[6] = 1;
             } else if (base_key == neighbour_keys.ne_key && direction == 7) {
                 fi[8] = int_to_float(current_payload);
-                received_number ++;
+                received_packets[7] = 1;
+            } else {
+                log_info("The payload does not belong to me. base_key = %d, direction=%d", base_key, direction);
             }
         } else {
-            log_debug("couldn't read state from my neighbours.");
+            if (!success_get_key)
+                log_info("I did not get the key");
+            if (!success_get_payload)
+                log_info("I did not get the payload");
         }
 
     }
@@ -262,11 +283,16 @@ void send_with_masked_key() {
 */
 void send_state(void) {
     // reset for next iteration
-    received_number = 0;
+    for (uint i = 0; i < 8; i++) {
+        received_packets[i] = 0;
+    }
     // send my new state to the simulation neighbours
     log_info("sending my position of %d via multicast with key %d",
 	    x_pos, my_key);
 	// diraction = ["n", "w", "s", "e", "nw", "sw", "se", "ne"]
+
+	// add a random delay here
+	spin1_delay_us(spin1_rand() % 10 );
 	send_with_masked_key();
     log_debug("sent my state via multicast");
 }
@@ -347,10 +373,10 @@ void collideStep(float *fi, float *feq, float *fi_star, float tau)
     }
 }
 
-void calWholeDensity(float *fi, float mass) {
-    mass = 0.0;
+void calWholeDensity(float *fi, float* mass) {
+    *mass = 0.0;
     for (int k = 0; k< Q; k++) {
-        mass += fi[k];
+        *mass += fi[k];
     }
 }
 
@@ -375,7 +401,6 @@ void calWholeDensity(float *fi, float mass) {
  */
 void receive_data(uint key, uint payload) {
 //    use(key);
-    log_info("the key I receive is %d", key);
     if (!circular_buffer_add(input_buffer, key)) {
         log_error("Could not add key");
     }
@@ -435,8 +460,9 @@ void update(uint ticks, uint b) {
         send_state();
         read_input_buffer();
         // stream step end
-        calWholeDensity(fi, mass);
-        recording_record(0, &fi_star[4], sizeof(float));
+//        calWholeDensity(fi, &mass);
+        recording_record(0, &u_x, sizeof(float));
+        recording_record(0, &u_y, sizeof(float));
         log_debug("Send my first state!");
     } else {
         // do a safety check on number of states. Not like we can fix it
@@ -449,10 +475,12 @@ void update(uint ticks, uint b) {
         // stream step start
         send_state();
         read_input_buffer();
-        // stream step end
-        calWholeDensity(fi, mass);
-        recording_record(0, &fi_star[4], sizeof(float));
-        recording_do_timestep_update(time);
+//        calWholeDensity(fi, &mass);
+        if (time % 10 == 0) {
+            recording_record(0, &u_x, sizeof(float));
+            recording_record(0, &u_y, sizeof(float));
+            recording_do_timestep_update(time);
+        }
     }
 }
 
@@ -548,6 +576,9 @@ void c_main(void) {
 
     // Load DTCM data
     uint32_t timer_period;
+
+    // init the random seed
+    spin1_srand(2001);
 
     // initialise the model
     if (!initialize(&timer_period)) {
