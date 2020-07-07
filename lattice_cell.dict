@@ -67,32 +67,33 @@ Id,Preface,Original
 65,[ERROR] (data_specification.c: 66): ,Magic number is incorrect: %08x
 66,[ERROR] (data_specification.c: 71): ,Version number is incorrect: %08x
 67,[INFO] (data_specification.c: 78): ,magic = %08x, version = %d.%d
-12001,[ERROR] (lattice_cell.c: 164): ,didn't receive the correct number of fi_star
-12002,[ERROR] (lattice_cell.c: 165): ,only received %d states
-12003,[INFO] (lattice_cell.c: 180): ,current_key = %d, current_payload = %f, direction = %d
-12004,[DEBUG] (lattice_cell.c: 210): ,couldn't read state from my neighbours.
-12005,[INFO] (lattice_cell.c: 228): ,n=%d w=%d s=%d e=%d, nw=%d sw=%d se=%d ne=%d
-12006,[INFO] (lattice_cell.c: 264): ,sending my position of %d via multicast with key %d
-12007,[DEBUG] (lattice_cell.c: 267): ,sent my state via multicast
-12008,[INFO] (lattice_cell.c: 374): ,the key I receive is %d
-12009,[ERROR] (lattice_cell.c: 376): ,Could not add key
-12010,[ERROR] (lattice_cell.c: 379): ,Could not add payload
-12011,[INFO] (lattice_cell.c: 401): ,on tick %d of %d
-12012,[INFO] (lattice_cell.c: 412): ,updating recording regions
-12013,[INFO] (lattice_cell.c: 416): ,Simulation complete.
-12014,[DEBUG] (lattice_cell.c: 436): ,Send my first state!
-12015,[ERROR] (lattice_cell.c: 461): ,this should never ever be done
-12016,[INFO] (lattice_cell.c: 465): ,Initialise: started
-12017,[ERROR] (lattice_cell.c: 472): ,failed to read the data spec header
-12018,[ERROR] (lattice_cell.c: 490): ,this lattice cell can't affect anything, deduced as an error,please fix the application fabric and try again
-12019,[INFO] (lattice_cell.c: 494): ,my key is %d
-12020,[INFO] (lattice_cell.c: 501): ,I'm in position ( %d, %d)
-12021,[INFO] (lattice_cell.c: 507): ,my n key is %d
-12022,[INFO] (lattice_cell.c: 513): ,my U_X = %f
-12023,[INFO] (lattice_cell.c: 514): ,my U_Y = %f
-12024,[INFO] (lattice_cell.c: 522): ,input_buffer initialised
-12025,[INFO] (lattice_cell.c: 527): ,Recording flags = 0x%08x
-12026,[INFO] (lattice_cell.c: 543): ,starting lattice cell
-12027,[ERROR] (lattice_cell.c: 550): ,Error in initialisation - exiting!
-12028,[INFO] (lattice_cell.c: 555): ,setting timer to execute every %d microseconds
-12029,[INFO] (lattice_cell.c: 563): ,Starting\n
+12001,[ERROR] (lattice_cell.c: 174): ,didn't receive the correct number of fi_star
+12002,[INFO] (lattice_cell.c: 187): ,current_buffer_size = %d
+12003,[INFO] (lattice_cell.c: 200): ,current_key = %d, current_payload = %f, direction = %d
+12004,[INFO] (lattice_cell.c: 229): ,The payload does not belong to me. base_key = %d, direction=%d
+12005,[INFO] (lattice_cell.c: 233): ,I did not get the key
+12006,[INFO] (lattice_cell.c: 235): ,I did not get the payload
+12007,[INFO] (lattice_cell.c: 253): ,n=%d w=%d s=%d e=%d, nw=%d sw=%d se=%d ne=%d
+12008,[INFO] (lattice_cell.c: 291): ,sending my position of %d via multicast with key %d
+12009,[DEBUG] (lattice_cell.c: 297): ,sent my state via multicast
+12010,[ERROR] (lattice_cell.c: 405): ,Could not add key
+12011,[ERROR] (lattice_cell.c: 408): ,Could not add payload
+12012,[INFO] (lattice_cell.c: 430): ,on tick %d of %d
+12013,[INFO] (lattice_cell.c: 441): ,updating recording regions
+12014,[INFO] (lattice_cell.c: 445): ,Simulation complete.
+12015,[DEBUG] (lattice_cell.c: 466): ,Send my first state!
+12016,[ERROR] (lattice_cell.c: 493): ,this should never ever be done
+12017,[INFO] (lattice_cell.c: 497): ,Initialise: started
+12018,[ERROR] (lattice_cell.c: 504): ,failed to read the data spec header
+12019,[ERROR] (lattice_cell.c: 522): ,this lattice cell can't affect anything, deduced as an error,please fix the application fabric and try again
+12020,[INFO] (lattice_cell.c: 526): ,my key is %d
+12021,[INFO] (lattice_cell.c: 533): ,I'm in position ( %d, %d)
+12022,[INFO] (lattice_cell.c: 539): ,my n key is %d
+12023,[INFO] (lattice_cell.c: 545): ,my U_X = %f
+12024,[INFO] (lattice_cell.c: 546): ,my U_Y = %f
+12025,[INFO] (lattice_cell.c: 554): ,input_buffer initialised
+12026,[INFO] (lattice_cell.c: 559): ,Recording flags = 0x%08x
+12027,[INFO] (lattice_cell.c: 575): ,starting lattice cell
+12028,[ERROR] (lattice_cell.c: 585): ,Error in initialisation - exiting!
+12029,[INFO] (lattice_cell.c: 590): ,setting timer to execute every %d microseconds
+12030,[INFO] (lattice_cell.c: 598): ,Starting\n
