@@ -27,8 +27,8 @@
 /*
 * Data needed by the LBM
 */
-#define xdim 10
-#define ydim 10
+#define xdim 128
+#define ydim 128
 #define Q 9
 
 // constant about the speed of lattice
@@ -82,8 +82,8 @@ static uint32_t current_payload;
 
 
 // ! position data
-uint x_pos = 0;
-uint y_pos = 0;
+int x_pos = 0;
+int y_pos = 0;
 
 
 //! control value, which says how many timer ticks to run for before exiting
@@ -165,10 +165,11 @@ static inline float int_to_float( int data){
 
 
 
-
+/*
+ * Check if the lattice receive the right number of packets and from the right directions
+ */
 void do_safety_check(void) {
-    // do a safety check on number of states. Not like we can fix it
-    // if we've missed events
+
     cpsr = spin1_int_disable();
     if (! (received_packets[0] && received_packets[1] && received_packets[2] && received_packets[3] && received_packets[4] && received_packets[5] && received_packets[6] && received_packets[7])) {
          log_error("didn't receive the correct number of fi_star");
@@ -178,16 +179,21 @@ void do_safety_check(void) {
 }
 
 
+/*
+ * Receive the fi_star
+ */
 void read_input_buffer(void) {
+    // wait until receive the correct number of packets
     while (circular_buffer_size(input_buffer) < 128) {
         current_buffer_size = circular_buffer_size(input_buffer);
         for(uint32_t counter=0; counter < 10000; counter++){
             //do nothing
         }
-        log_info("current_buffer_size = %d", current_buffer_size);
+//        log_info("current_buffer_size = %d", current_buffer_size);
+        spin1_delay_us(spin1_rand()%20);
     }
     cpsr = spin1_int_disable();
-    circular_buffer_print_buffer(input_buffer);
+//    circular_buffer_print_buffer(input_buffer);
 
 
     for (uint32_t counter = 0; counter < 64; counter++) {
@@ -197,7 +203,7 @@ void read_input_buffer(void) {
         uint32_t direction = current_key % 8;
         // reduce to the base key
         uint32_t base_key = current_key / 8;
-        log_info("current_key = %d, current_payload = %f, direction = %d", current_key, current_payload, direction);
+//        log_info("current_key = %d, current_payload = %f, direction = %d", current_key, current_payload, direction);
         if (success_get_key && success_get_payload) {
             // diraction = ["me", "n", "w", "s", "e", "nw", "sw", "se", "ne"]
             fi_star[0] = fi[0];
@@ -226,7 +232,7 @@ void read_input_buffer(void) {
                 fi[8] = int_to_float(current_payload);
                 received_packets[7] = 1;
             } else {
-                log_info("The payload does not belong to me. base_key = %d, direction=%d", base_key, direction);
+                spin1_delay_us(spin1_rand()%20);
             }
         } else {
             if (!success_get_key)
@@ -250,7 +256,7 @@ void send_with_masked_key() {
 	uint32_t southwest = float_to_int(fi_star[6]);
 	uint32_t southeast = float_to_int(fi_star[7]);
 	uint32_t northeast = float_to_int(fi_star[8]);
-    log_info("n=%d w=%d s=%d e=%d, nw=%d sw=%d se=%d ne=%d", north, west, south, east, northwest, southwest, southeast, northeast);
+//    log_info("n=%d w=%d s=%d e=%d, nw=%d sw=%d se=%d ne=%d", north, west, south, east, northwest, southwest, southeast, northeast);
 
 
     while (!spin1_send_mc_packet(my_key, north, WITH_PAYLOAD)) {
@@ -287,8 +293,8 @@ void send_state(void) {
         received_packets[i] = 0;
     }
     // send my new state to the simulation neighbours
-    log_info("sending my position of %d via multicast with key %d",
-	    x_pos, my_key);
+//    log_info("sending my fi_star of %d via multicast with key %d",
+//	    fi_star[4], my_key);
 	// diraction = ["n", "w", "s", "e", "nw", "sw", "se", "ne"]
 
 	// add a random delay here
@@ -380,6 +386,10 @@ void calWholeDensity(float *fi, float* mass) {
     }
 }
 
+float calMomentum(float rho, float u_x) {
+    return rho * u_x;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -449,6 +459,7 @@ void update(uint ticks, uint b) {
 
         return;
     }
+    float momentum;
 
     if (time == 0) {
         initFi(fi , rho);
@@ -461,8 +472,9 @@ void update(uint ticks, uint b) {
         read_input_buffer();
         // stream step end
 //        calWholeDensity(fi, &mass);
-        recording_record(0, &u_x, sizeof(float));
-        recording_record(0, &u_y, sizeof(float));
+//        recording_record(0, &u_x, sizeof(float));
+        momentum = calMomentum(rho, u_x);
+        recording_record(0, &(momentum), sizeof(float));
         log_debug("Send my first state!");
     } else {
         // do a safety check on number of states. Not like we can fix it
@@ -476,11 +488,10 @@ void update(uint ticks, uint b) {
         send_state();
         read_input_buffer();
 //        calWholeDensity(fi, &mass);
-        if (time % 10 == 0) {
-            recording_record(0, &u_x, sizeof(float));
-            recording_record(0, &u_y, sizeof(float));
-            recording_do_timestep_update(time);
-        }
+//        recording_record(0, &u_x, sizeof(float));
+        momentum = calMomentum(rho, u_x);
+        recording_record(0, &(momentum), sizeof(float));
+        recording_do_timestep_update(time);
     }
 }
 
@@ -492,6 +503,7 @@ void receive_data_void(uint key, uint unknown) {
     use(unknown);
     log_error("this should never ever be done");
 }
+
 
 static bool initialize(uint32_t *timer_period) {
     log_info("Initialise: started");
