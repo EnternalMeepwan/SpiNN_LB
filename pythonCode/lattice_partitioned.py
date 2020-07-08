@@ -19,14 +19,14 @@ import spinnaker_graph_front_end as front_end
 
 runtime = 500
 # machine_time_step = 100
-MAX_X_SIZE_OF_FABRIC = 10
-MAX_Y_SIZE_OF_FABRIC = 10
+MAX_X_SIZE_OF_FABRIC = 128
+MAX_Y_SIZE_OF_FABRIC = 128
 n_chips = (MAX_X_SIZE_OF_FABRIC * MAX_Y_SIZE_OF_FABRIC) // 15
 
 ex = [0, 1, 0, -1, 0, 1, -1, -1, 1]
 ey = [0, 0, 1, 0, -1, 1, 1, -1, -1]
 
-
+# Calculate the position of  8 neighbours for a givin Lattice
 def generatePositionMap(x_dim, y_dim):
     positionMap = {}
     #   diraction = ["me", "n", "w", "s", "e", "nw", "sw", "se", "ne"]
@@ -36,11 +36,11 @@ def generatePositionMap(x_dim, y_dim):
         positionMap[i] = (x_temp, y_temp)
     return positionMap
 
-
+# Calculate the key for a givin position
 def generateKeys(position):
     return position[0] * MAX_X_SIZE_OF_FABRIC + position[1]
 
-
+#! LB code: initialize the velocity
 def initVelocity(x_pos, y_pos):
     U_0 = 0.01
     K = 30.0
@@ -52,17 +52,17 @@ def initVelocity(x_pos, y_pos):
     else:
         u_x = U_0 * math.tanh(K * (0.75 - y_temp))
 #     print("the u_x of ({}, {}) is {}".format(x_pos, y_pos, u_x))
-    u_y = U_0 * delta * math.sin(2 * math.pi * (x_temp + 0.25))
+    u_y = U_0 * delta * math.sin(2.0 * math.pi * (x_temp + 0.25))
 #     print("the u_y of ({}, {}) is {}".format(x_pos, y_pos, u_y))    
     return u_x, u_y
 
 # set up the front end and ask for the detected machines dimensions
 front_end.setup(
-    n_chips_required=n_chips, model_binary_folder=os.path.dirname(os.path.abspath("__file__")), machine_time_step=10000)
+    n_chips_required=1024, model_binary_folder=os.path.dirname(os.path.abspath("__file__")), machine_time_step=10000)
 
 # figure out if machine can handle simulation
 cores = front_end.get_number_of_available_cores_on_machine()
-# print(cores)
+print(cores)
 if cores <= (MAX_X_SIZE_OF_FABRIC * MAX_Y_SIZE_OF_FABRIC):
     raise KeyError("Don't have enough cores to run simulation")
 
@@ -86,8 +86,8 @@ for x in range(0, MAX_X_SIZE_OF_FABRIC):
 
 # verify the initial state
 output = ""
-for y in range(MAX_X_SIZE_OF_FABRIC - 1, 0, -1):
-    for x in range(0, MAX_Y_SIZE_OF_FABRIC):
+for x in range(0, MAX_X_SIZE_OF_FABRIC):
+    for y in range(0, MAX_Y_SIZE_OF_FABRIC):
         output += "({0}, {1}) ".format(vertices[x][y].x_position, vertices[x][y].y_position)
     output += "\n"
 print(output)
@@ -141,7 +141,7 @@ for time in range(0, runtime, 2):
     output = ""
     for x in range(0, MAX_Y_SIZE_OF_FABRIC):
         for y in range(0, MAX_Y_SIZE_OF_FABRIC):
-            output += "{}{}".format(recorded_data[x, y][time], recorded_data[x, y][time+1])
+            output += "{} {}".format(recorded_data[x, y][time], recorded_data[x, y][time+1])
         output += "\n"
     print(output)
     print("\n\n")
