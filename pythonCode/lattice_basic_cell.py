@@ -12,7 +12,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+from collections import OrderedDict
 from enum import Enum
 import struct
 
@@ -39,6 +39,11 @@ from spinnaker_graph_front_end.utilities.data_utils import (
 
 from data_specification.enums.data_type import DataType
 
+from spinn_front_end_common.utilities import exceptions
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class LatticeBasicCell(
     SimulatorVertex, MachineDataSpecableVertex,
@@ -58,10 +63,12 @@ class LatticeBasicCell(
 
     POSITION_DATA_SIZE = 2 * BYTES_PER_WORD
 
-    NEIGHBOUR_KEYS_SIZE = 8 * BYTES_PER_WORD
+    NEIGHBOUR_KEYS_SIZE = 9 * BYTES_PER_WORD  # for 8 directions and a mask
 
     VELOCITY_SIZE = 2 * BYTES_PER_WORD  # u_x and u_y
 
+    # The order of which directions are writeen to sdram
+    ORDER_OF_DIRECTIONS = ["N", "W", "S", "E", "NW", "SW", "SE", "NE"]
     # Regions for populations
     DATA_REGIONS = Enum(
         value="DATA_REGIONS",
@@ -72,24 +79,56 @@ class LatticeBasicCell(
                ('VELOCITY', 4),
                ('RESULTS', 5)])
 
-    def __init__(self, label, x_position, y_position, n_key, w_key, s_key, e_key, nw_key, sw_key, se_key, ne_key, u_x,
-                 u_y):
+    def __init__(self, label, x_position, y_position, u_x, u_y):
         super(LatticeBasicCell, self).__init__(label, "lattice_cell.aplx")
         AbstractProvidesNKeysForPartition.__init__(self)
         # app specific data items
         self._x_position = x_position
         self._y_position = y_position
-        self._n_key = n_key
-        self._s_key = s_key
-        self._w_key = w_key
-        self._e_key = e_key
-        self._nw_key = nw_key
-        self._ne_key = ne_key
-        self._sw_key = sw_key
-        self._se_key = se_key
+        # self._n_key = n_key
+        # self._s_key = s_key
+        # self._w_key = w_key
+        # self._e_key = e_key
+        # self._nw_key = nw_key
+        # self._ne_key = ne_key
+        # self._sw_key = sw_key
+        # self._se_key = se_key
         self.u_x = u_x
         self.u_y = u_y
 
+        self._loccation_vertices = OrderedDict()
+        for direction in self.ORDER_OF_DIRECTIONS:
+            self._loccation_vertices[direction] = None
+
+    def set_direction_vertex(self, direction, vertex):
+        """
+        Add a vertex to the corresponding direction
+        """
+        self._loccation_vertices[direction] = vertex
+
+    def _write_key_data(self, spec, routing_info, graph):
+        spec.switch_write_focus(region=self.DATA_REGIONS.NEIGHBOUR_KEYS.value)
+        incoming_edges = graph.get_edges_ending_at_vertex_with_partition_name(self, self.PARTITION_ID)
+
+        # verify the number of edges
+        if len(incoming_edges) != 8:
+            print(incoming_edges)
+            raise exceptions.ConfigurationException("Should only have 8 edges")
+
+        # get incoming edges
+        for direction in self._loccation_vertices:
+            key = routing_info.get_routing_info_from_pre_vertex(
+                self._loccation_vertices[direction],
+                self.PARTITION_ID).keys_and_masks[0].key
+            if key is not None:
+                spec.write_value(data=key)
+            else:
+                logger.warning("This lattice miss a edge from direction {}".format(direction))
+                spec.write_value(data_type=DataType.INT32, data=-1)
+
+        mask = routing_info.get_routing_info_from_pre_vertex(self._loccation_vertices["S"],
+                                                             self.PARTITION_ID).keys_and_masks[0].mask
+        spec.write_value(data=mask, data_type=DataType.UINT32)
 
     @inject_items({"data_n_time_steps": "DataNTimeSteps"})
     @overrides(
@@ -168,19 +207,23 @@ class LatticeBasicCell(
         )
         spec.write_value(int(self._x_position))
         spec.write_value(int(self._y_position))
+
         # write neighbour keys
         # diraction = ["me", "n", "w", "s", "e", "nw", "sw", "se", "ne"]
-        spec.switch_write_focus(
-            region=self.DATA_REGIONS.NEIGHBOUR_KEYS.value
-        )
-        spec.write_value(self._n_key)
-        spec.write_value(self._w_key)
-        spec.write_value(self._s_key)
-        spec.write_value(self._e_key)
-        spec.write_value(self._nw_key)
-        spec.write_value(self._sw_key)
-        spec.write_value(self._se_key)
-        spec.write_value(self._ne_key)
+        # spec.switch_write_focus(
+        #     region=self.DATA_REGIONS.NEIGHBOUR_KEYS.value
+        # )
+        # spec.write_value(self._n_key)
+        # spec.write_value(self._w_key)
+        # spec.write_value(self._s_key)
+        # spec.write_value(self._e_key)
+        # spec.write_value(self._nw_key)
+        # spec.write_value(self._sw_key)
+        # spec.write_value(self._se_key)
+        # spec.write_value(self._ne_key)
+
+        # write the neighbour keys and masks
+        self._write_key_data(spec, routing_info, machine_graph)
 
         spec.switch_write_focus(region=self.DATA_REGIONS.VELOCITY.value)
         spec.write_value(self.u_x, data_type=DataType.FLOAT_32)
@@ -225,7 +268,7 @@ class LatticeBasicCell(
 
     @overrides(AbstractProvidesNKeysForPartition.get_n_keys_for_partition)
     def get_n_keys_for_partition(self, partition, graph_mapper):
-        return 8  # one for n s w e ne nw sw se
+        return 8  # for its 8 neighbours to send
 
     @property
     def y_position(self):

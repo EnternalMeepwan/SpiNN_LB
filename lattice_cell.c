@@ -27,8 +27,8 @@
 /*
 * Data needed by the LBM
 */
-#define xdim 128
-#define ydim 128
+#define xdim 10
+#define ydim 10
 #define Q 9
 
 // constant about the speed of lattice
@@ -58,9 +58,6 @@ float rho = 1.0;
 // u_x u_y, velocity in two dimension
 float u_x = 0.0001;
 float u_y = 1.0;
-
-// total density, for check the correctness
-float mass;
 
 // parameter
 float nu = 0.000128;
@@ -145,6 +142,7 @@ typedef struct neighbour_keys_region {
     uint32_t sw_key;
     uint32_t se_key;
     uint32_t ne_key;
+    uint32_t key_mask;
 } neighbour_keys_t;
 neighbour_keys_t neighbour_keys;
 
@@ -189,20 +187,22 @@ void read_input_buffer(void) {
         for(uint32_t counter=0; counter < 10000; counter++){
             //do nothing
         }
-//        log_info("current_buffer_size = %d", current_buffer_size);
+        log_info("current_buffer_size = %d", current_buffer_size);
         spin1_delay_us(spin1_rand()%20);
     }
     cpsr = spin1_int_disable();
-//    circular_buffer_print_buffer(input_buffer);
+    circular_buffer_print_buffer(input_buffer);
 
 
     for (uint32_t counter = 0; counter < 64; counter++) {
         bool success_get_key = circular_buffer_get_next(input_buffer, &current_key);
         bool success_get_payload = circular_buffer_get_next(input_buffer, &current_payload);
         // get the direction
-        uint32_t direction = current_key % 8;
+        uint32_t direction = current_key & 0x00000007;
+        log_info("the direction is %d", direction);
         // reduce to the base key
-        uint32_t base_key = current_key / 8;
+        uint32_t base_key = current_key & neighbour_keys.key_mask;
+        log_info("the base_key is %d", base_key);
 //        log_info("current_key = %d, current_payload = %f, direction = %d", current_key, current_payload, direction);
         if (success_get_key && success_get_payload) {
             // diraction = ["me", "n", "w", "s", "e", "nw", "sw", "se", "ne"]
@@ -232,7 +232,7 @@ void read_input_buffer(void) {
                 fi[8] = int_to_float(current_payload);
                 received_packets[7] = 1;
             } else {
-                spin1_delay_us(spin1_rand()%20);
+
             }
         } else {
             if (!success_get_key)
@@ -379,11 +379,12 @@ void collideStep(float *fi, float *feq, float *fi_star, float tau)
     }
 }
 
-void calWholeDensity(float *fi, float* mass) {
-    *mass = 0.0;
+float calWholeDensity(float *fi) {
+    float mass = 0.0;
     for (int k = 0; k< Q; k++) {
-        *mass += fi[k];
+        mass += fi[k];
     }
+    return mass;
 }
 
 float calMomentum(float rho, float u_x) {
@@ -459,7 +460,7 @@ void update(uint ticks, uint b) {
 
         return;
     }
-    float momentum;
+    float momentum, mass;
 
     if (time == 0) {
         initFi(fi , rho);
@@ -471,11 +472,11 @@ void update(uint ticks, uint b) {
         send_state();
         read_input_buffer();
         // stream step end
-//        calWholeDensity(fi, &mass);
+        mass = calWholeDensity(fi);
 //        recording_record(0, &u_x, sizeof(float));
         momentum = calMomentum(rho, u_x);
-        recording_record(0, &(momentum), sizeof(float));
-        log_debug("Send my first state!");
+        recording_record(0, &(fi_star[4]), sizeof(float));
+        log_info("Send my first state!");
     } else {
         // do a safety check on number of states. Not like we can fix it
         // if we've missed events
@@ -487,10 +488,10 @@ void update(uint ticks, uint b) {
         // stream step start
         send_state();
         read_input_buffer();
-//        calWholeDensity(fi, &mass);
+        mass = calWholeDensity(fi);
 //        recording_record(0, &u_x, sizeof(float));
         momentum = calMomentum(rho, u_x);
-        recording_record(0, &(momentum), sizeof(float));
+        recording_record(0, &(fi_star[4]), sizeof(float));
         recording_do_timestep_update(time);
     }
 }
@@ -549,6 +550,14 @@ static bool initialize(uint32_t *timer_period) {
     neighbour_keys = *neighbour_data_sdram;
 
     log_info("my n key is %d", neighbour_keys.n_key);
+    log_info("my s key is %d", neighbour_keys.s_key);
+    log_info("my w key is %d", neighbour_keys.w_key);
+    log_info("my e key is %d", neighbour_keys.e_key);
+    log_info("my sw key is %d", neighbour_keys.sw_key);
+    log_info("my se key is %d", neighbour_keys.se_key);
+    log_info("my ne key is %d", neighbour_keys.ne_key);
+    log_info("my nw key is %d", neighbour_keys.nw_key);
+
 
     velocity_t *velocity_sdram =
         data_specification_get_region(VELOCITY, data);
