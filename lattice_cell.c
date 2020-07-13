@@ -27,8 +27,8 @@
 /*
 * Data needed by the LBM
 */
-#define xdim 10
-#define ydim 10
+#define xdim 20
+#define ydim 20
 #define Q 9
 
 // constant about the speed of lattice
@@ -49,8 +49,6 @@ float fi_star[Q];
 
 // wi
 float wi[Q]  = {4.0 / 9.0, 1.0 / 9.0, 1.0 / 9.0, 1.0 / 9.0, 1.0 / 9.0, 1.0 / 36.0, 1.0 / 36.0, 1.0 / 36.0, 1.0 / 36.0};
-
-
 
 // macro fluid density rho init as 1.0
 float rho = 1.0;
@@ -77,6 +75,8 @@ static circular_buffer input_buffer;
 static uint32_t current_key;
 static uint32_t current_payload;
 
+// un-matched packets
+uint unmatched_packets = 0;
 
 // ! position data
 int x_pos = 0;
@@ -169,6 +169,7 @@ static inline float int_to_float( int data){
 void do_safety_check(void) {
 
     cpsr = spin1_int_disable();
+    log_info("the unmatched_packets is %d", unmatched_packets);
     if (! (received_packets[0] && received_packets[1] && received_packets[2] && received_packets[3] && received_packets[4] && received_packets[5] && received_packets[6] && received_packets[7])) {
          log_error("didn't receive the correct number of fi_star");
          rt_error(RTE_SWERR);
@@ -187,7 +188,7 @@ void read_input_buffer(void) {
         for(uint32_t counter=0; counter < 10000; counter++){
             //do nothing
         }
-        log_info("current_buffer_size = %d", current_buffer_size);
+//        log_info("current_buffer_size = %d", current_buffer_size);
         spin1_delay_us(spin1_rand()%20);
     }
     cpsr = spin1_int_disable();
@@ -199,10 +200,10 @@ void read_input_buffer(void) {
         bool success_get_payload = circular_buffer_get_next(input_buffer, &current_payload);
         // get the direction
         uint32_t direction = current_key & 0x00000007;
-        log_info("the direction is %d", direction);
+//        log_info("the direction is %d", direction);
         // reduce to the base key
         uint32_t base_key = current_key & neighbour_keys.key_mask;
-        log_info("the base_key is %d", base_key);
+//        log_info("the base_key is %d", base_key);
 //        log_info("current_key = %d, current_payload = %f, direction = %d", current_key, current_payload, direction);
         if (success_get_key && success_get_payload) {
             // diraction = ["me", "n", "w", "s", "e", "nw", "sw", "se", "ne"]
@@ -232,7 +233,7 @@ void read_input_buffer(void) {
                 fi[8] = int_to_float(current_payload);
                 received_packets[7] = 1;
             } else {
-
+                unmatched_packets += 1;
             }
         } else {
             if (!success_get_key)
@@ -262,24 +263,31 @@ void send_with_masked_key() {
     while (!spin1_send_mc_packet(my_key, north, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
+    spin1_delay_us(40);
     while (!spin1_send_mc_packet(my_key+1, west, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
+    spin1_delay_us(41);
     while (!spin1_send_mc_packet(my_key+2, south, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
+    spin1_delay_us(42);
     while (!spin1_send_mc_packet(my_key+3, east, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
+    spin1_delay_us(43);
     while (!spin1_send_mc_packet(my_key+4, northwest, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
+    spin1_delay_us(45);
     while (!spin1_send_mc_packet(my_key+5, southwest, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
+    spin1_delay_us(41);
     while (!spin1_send_mc_packet(my_key+6, southeast, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
+    spin1_delay_us(47);
     while (!spin1_send_mc_packet(my_key+7, northeast, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
@@ -292,13 +300,14 @@ void send_state(void) {
     for (uint i = 0; i < 8; i++) {
         received_packets[i] = 0;
     }
+    unmatched_packets = 0;
     // send my new state to the simulation neighbours
 //    log_info("sending my fi_star of %d via multicast with key %d",
 //	    fi_star[4], my_key);
 	// diraction = ["n", "w", "s", "e", "nw", "sw", "se", "ne"]
 
 	// add a random delay here
-	spin1_delay_us(spin1_rand() % 10 );
+	spin1_delay_us(40);
 	send_with_masked_key();
     log_debug("sent my state via multicast");
 }
@@ -475,13 +484,11 @@ void update(uint ticks, uint b) {
         mass = calWholeDensity(fi);
 //        recording_record(0, &u_x, sizeof(float));
         momentum = calMomentum(rho, u_x);
-        recording_record(0, &(fi_star[4]), sizeof(float));
-        log_info("Send my first state!");
+        recording_record(0, &(u_x), sizeof(float));
     } else {
         // do a safety check on number of states. Not like we can fix it
         // if we've missed events
         do_safety_check();
-
         computeRho_N_U(&rho, &u_x, &u_y, fi);
         computeFeq(rho, u_x, u_y, feq);
         collideStep(fi, feq, fi_star, tau);
@@ -489,10 +496,11 @@ void update(uint ticks, uint b) {
         send_state();
         read_input_buffer();
         mass = calWholeDensity(fi);
-//        recording_record(0, &u_x, sizeof(float));
         momentum = calMomentum(rho, u_x);
-        recording_record(0, &(fi_star[4]), sizeof(float));
-        recording_do_timestep_update(time);
+        if (time % 10 == 0) {
+            recording_record(0, &(u_x), sizeof(float));
+            recording_do_timestep_update(time);
+        }
     }
 }
 
