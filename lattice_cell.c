@@ -174,6 +174,11 @@ void do_safety_check(void) {
          log_error("didn't receive the correct number of fi_star");
          rt_error(RTE_SWERR);
     }
+
+    if (unmatched_packets != 56) {
+        log_error("did not receive the correct number of un_matched fi_star");
+        rt_error(RTE_SWERR);
+    }
     spin1_mode_restore(cpsr);
 }
 
