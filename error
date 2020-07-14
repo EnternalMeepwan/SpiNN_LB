@@ -1,0 +1,206 @@
+ ============================================================ 2020-07-14 12:41:51 INFO: Time 0:00:00.198554 taken by 
+ProfileDataGatherer 2020-07-14 12:41:51 INFO: Turning off machine 2020-07-14 12:41:51 WARNING: The extra monitor on 
+0, 0 has detected that 2383 packets were dumped from a outgoing link of this chip's router. This often occurs when 
+external devices are used in the script but not connected to the communication fabric correctly. These packets may 
+have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra 
+monitor on 0, 1 has detected that 4299 packets were dumped from a outgoing link of this chip's router. This often 
+occurs when external devices are used in the script but not connected to the communication fabric correctly. These 
+packets may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 
+WARNING: The extra monitor on 0, 2 has detected that 2929 packets were dumped from a outgoing link of this chip's 
+router. This often occurs when external devices are used in the script but not connected to the communication fabric 
+correctly. These packets may have been reinjected multiple times and so this number may be a overestimate. 
+2020-07-14 12:41:51 WARNING: The extra monitor on 0, 3 has detected that 2545 packets were dumped from a outgoing 
+link of this chip's router. This often occurs when external devices are used in the script but not connected to the 
+communication fabric correctly. These packets may have been reinjected multiple times and so this number may be a 
+overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 1, 0 has detected that 2561 packets were dumped from 
+a outgoing link of this chip's router. This often occurs when external devices are used in the script but not 
+connected to the communication fabric correctly. These packets may have been reinjected multiple times and so this 
+number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 1, 1 has detected that 6317 packets 
+were dumped from a outgoing link of this chip's router. This often occurs when external devices are used in the 
+script but not connected to the communication fabric correctly. These packets may have been reinjected multiple 
+times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 1, 2 has detected 
+that 6900 packets were dumped from a outgoing link of this chip's router. This often occurs when external devices 
+are used in the script but not connected to the communication fabric correctly. These packets may have been 
+reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor 
+on 1, 3 has detected that 6298 packets were dumped from a outgoing link of this chip's router. This often occurs 
+when external devices are used in the script but not connected to the communication fabric correctly. These packets 
+may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The 
+extra monitor on 1, 4 has detected that 2417 packets were dumped from a outgoing link of this chip's router. This 
+often occurs when external devices are used in the script but not connected to the communication fabric correctly. 
+These packets may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 
+WARNING: The extra monitor on 2, 0 has detected that 265 packets were dumped from a outgoing link of this chip's 
+router. This often occurs when external devices are used in the script but not connected to the communication fabric 
+correctly. These packets may have been reinjected multiple times and so this number may be a overestimate. 
+2020-07-14 12:41:51 WARNING: The extra monitor on 2, 1 has detected that 2717 packets were dumped from a outgoing 
+link of this chip's router. This often occurs when external devices are used in the script but not connected to the 
+communication fabric correctly. These packets may have been reinjected multiple times and so this number may be a 
+overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 2, 2 has detected that 6889 packets were dumped from 
+a outgoing link of this chip's router. This often occurs when external devices are used in the script but not 
+connected to the communication fabric correctly. These packets may have been reinjected multiple times and so this 
+number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 2, 3 has detected that 6199 packets 
+were dumped from a outgoing link of this chip's router. This often occurs when external devices are used in the 
+script but not connected to the communication fabric correctly. These packets may have been reinjected multiple 
+times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 2, 4 has detected 
+that 5832 packets were dumped from a outgoing link of this chip's router. This often occurs when external devices 
+are used in the script but not connected to the communication fabric correctly. These packets may have been 
+reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor 
+on 2, 5 has detected that 2464 packets were dumped from a outgoing link of this chip's router. This often occurs 
+when external devices are used in the script but not connected to the communication fabric correctly. These packets 
+may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The 
+extra monitor on 3, 0 has detected that 2320 packets were dumped from a outgoing link of this chip's router. This 
+often occurs when external devices are used in the script but not connected to the communication fabric correctly. 
+These packets may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 
+WARNING: The extra monitor on 3, 1 has detected that 5550 packets were dumped from a outgoing link of this chip's 
+router. This often occurs when external devices are used in the script but not connected to the communication fabric 
+correctly. These packets may have been reinjected multiple times and so this number may be a overestimate. 
+2020-07-14 12:41:51 WARNING: The extra monitor on 3, 2 has detected that 5854 packets were dumped from a outgoing 
+link of this chip's router. This often occurs when external devices are used in the script but not connected to the 
+communication fabric correctly. These packets may have been reinjected multiple times and so this number may be a 
+overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 3, 3 has detected that 6710 packets were dumped from 
+a outgoing link of this chip's router. This often occurs when external devices are used in the script but not 
+connected to the communication fabric correctly. These packets may have been reinjected multiple times and so this 
+number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 3, 4 has detected that 6084 packets 
+were dumped from a outgoing link of this chip's router. This often occurs when external devices are used in the 
+script but not connected to the communication fabric correctly. These packets may have been reinjected multiple 
+times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 3, 5 has detected 
+that 5884 packets were dumped from a outgoing link of this chip's router. This often occurs when external devices 
+are used in the script but not connected to the communication fabric correctly. These packets may have been 
+reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor 
+on 3, 6 has detected that 2645 packets were dumped from a outgoing link of this chip's router. This often occurs 
+when external devices are used in the script but not connected to the communication fabric correctly. These packets 
+may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The 
+extra monitor on 4, 0 has detected that 2199 packets were dumped from a outgoing link of this chip's router. This 
+often occurs when external devices are used in the script but not connected to the communication fabric correctly. 
+These packets may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 
+WARNING: The extra monitor on 4, 1 has detected that 4200 packets were dumped from a outgoing link of this chip's 
+router. This often occurs when external devices are used in the script but not connected to the communication fabric 
+correctly. These packets may have been reinjected multiple times and so this number may be a overestimate. 
+2020-07-14 12:41:51 WARNING: The extra monitor on 4, 2 has detected that 6509 packets were dumped from a outgoing 
+link of this chip's router. This often occurs when external devices are used in the script but not connected to the 
+communication fabric correctly. These packets may have been reinjected multiple times and so this number may be a 
+overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 4, 3 has detected that 5387 packets were dumped from 
+a outgoing link of this chip's router. This often occurs when external devices are used in the script but not 
+connected to the communication fabric correctly. These packets may have been reinjected multiple times and so this 
+number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 4, 4 has detected that 6165 packets 
+were dumped from a outgoing link of this chip's router. This often occurs when external devices are used in the 
+script but not connected to the communication fabric correctly. These packets may have been reinjected multiple 
+times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 4, 5 has detected 
+that 6495 packets were dumped from a outgoing link of this chip's router. This often occurs when external devices 
+are used in the script but not connected to the communication fabric correctly. These packets may have been 
+reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor 
+on 4, 6 has detected that 5584 packets were dumped from a outgoing link of this chip's router. This often occurs 
+when external devices are used in the script but not connected to the communication fabric correctly. These packets 
+may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The 
+extra monitor on 4, 7 has detected that 2914 packets were dumped from a outgoing link of this chip's router. This 
+often occurs when external devices are used in the script but not connected to the communication fabric correctly. 
+These packets may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 
+WARNING: The extra monitor on 4, 8 has detected that 662 packets were dumped from a outgoing link of this chip's 
+router. This often occurs when external devices are used in the script but not connected to the communication fabric 
+correctly. These packets may have been reinjected multiple times and so this number may be a overestimate. 
+2020-07-14 12:41:51 WARNING: The extra monitor on 5, 1 has detected that 2301 packets were dumped from a outgoing 
+link of this chip's router. This often occurs when external devices are used in the script but not connected to the 
+communication fabric correctly. These packets may have been reinjected multiple times and so this number may be a 
+overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 5, 2 has detected that 4387 packets were dumped from 
+a outgoing link of this chip's router. This often occurs when external devices are used in the script but not 
+connected to the communication fabric correctly. These packets may have been reinjected multiple times and so this 
+number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 5, 3 has detected that 6505 packets 
+were dumped from a outgoing link of this chip's router. This often occurs when external devices are used in the 
+script but not connected to the communication fabric correctly. These packets may have been reinjected multiple 
+times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 5, 4 has detected 
+that 5584 packets were dumped from a outgoing link of this chip's router. This often occurs when external devices 
+are used in the script but not connected to the communication fabric correctly. These packets may have been 
+reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor 
+on 5, 5 has detected that 6640 packets were dumped from a outgoing link of this chip's router. This often occurs 
+when external devices are used in the script but not connected to the communication fabric correctly. These packets 
+may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The 
+extra monitor on 5, 6 has detected that 6827 packets were dumped from a outgoing link of this chip's router. This 
+often occurs when external devices are used in the script but not connected to the communication fabric correctly. 
+These packets may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 
+WARNING: The extra monitor on 5, 7 has detected that 7011 packets were dumped from a outgoing link of this chip's 
+router. This often occurs when external devices are used in the script but not connected to the communication fabric 
+correctly. These packets may have been reinjected multiple times and so this number may be a overestimate. 
+2020-07-14 12:41:51 WARNING: The extra monitor on 5, 8 has detected that 2062 packets were dumped from a outgoing 
+link of this chip's router. This often occurs when external devices are used in the script but not connected to the 
+communication fabric correctly. These packets may have been reinjected multiple times and so this number may be a 
+overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 6, 2 has detected that 2535 packets were dumped from 
+a outgoing link of this chip's router. This often occurs when external devices are used in the script but not 
+connected to the communication fabric correctly. These packets may have been reinjected multiple times and so this 
+number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 6, 3 has detected that 4740 packets 
+were dumped from a outgoing link of this chip's router. This often occurs when external devices are used in the 
+script but not connected to the communication fabric correctly. These packets may have been reinjected multiple 
+times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 6, 4 has detected 
+that 7207 packets were dumped from a outgoing link of this chip's router. This often occurs when external devices 
+are used in the script but not connected to the communication fabric correctly. These packets may have been 
+reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor 
+on 6, 5 has detected that 5811 packets were dumped from a outgoing link of this chip's router. This often occurs 
+when external devices are used in the script but not connected to the communication fabric correctly. These packets 
+may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The 
+extra monitor on 6, 6 has detected that 6731 packets were dumped from a outgoing link of this chip's router. This 
+often occurs when external devices are used in the script but not connected to the communication fabric correctly. 
+These packets may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 
+WARNING: The extra monitor on 6, 7 has detected that 7996 packets were dumped from a outgoing link of this chip's 
+router. This often occurs when external devices are used in the script but not connected to the communication fabric 
+correctly. These packets may have been reinjected multiple times and so this number may be a overestimate. 
+2020-07-14 12:41:51 WARNING: The extra monitor on 6, 8 has detected that 2688 packets were dumped from a outgoing 
+link of this chip's router. This often occurs when external devices are used in the script but not connected to the 
+communication fabric correctly. These packets may have been reinjected multiple times and so this number may be a 
+overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 7, 3 has detected that 3093 packets were dumped from 
+a outgoing link of this chip's router. This often occurs when external devices are used in the script but not 
+connected to the communication fabric correctly. These packets may have been reinjected multiple times and so this 
+number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 7, 4 has detected that 5383 packets 
+were dumped from a outgoing link of this chip's router. This often occurs when external devices are used in the 
+script but not connected to the communication fabric correctly. These packets may have been reinjected multiple 
+times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 7, 5 has detected 
+that 8622 packets were dumped from a outgoing link of this chip's router. This often occurs when external devices 
+are used in the script but not connected to the communication fabric correctly. These packets may have been 
+reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor 
+on 7, 6 has detected that 6190 packets were dumped from a outgoing link of this chip's router. This often occurs 
+when external devices are used in the script but not connected to the communication fabric correctly. These packets 
+may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The 
+extra monitor on 7, 7 has detected that 7185 packets were dumped from a outgoing link of this chip's router. This 
+often occurs when external devices are used in the script but not connected to the communication fabric correctly. 
+These packets may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 
+WARNING: The extra monitor on 7, 8 has detected that 3325 packets were dumped from a outgoing link of this chip's 
+router. This often occurs when external devices are used in the script but not connected to the communication fabric 
+correctly. These packets may have been reinjected multiple times and so this number may be a overestimate. 
+2020-07-14 12:41:51 WARNING: The extra monitor on 7, 9 has detected that 785 packets were dumped from a outgoing 
+link of this chip's router. This often occurs when external devices are used in the script but not connected to the 
+communication fabric correctly. These packets may have been reinjected multiple times and so this number may be a 
+overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 8, 4 has detected that 1988 packets were dumped from 
+a outgoing link of this chip's router. This often occurs when external devices are used in the script but not 
+connected to the communication fabric correctly. These packets may have been reinjected multiple times and so this 
+number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 8, 5 has detected that 4935 packets 
+were dumped from a outgoing link of this chip's router. This often occurs when external devices are used in the 
+script but not connected to the communication fabric correctly. These packets may have been reinjected multiple 
+times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 8, 6 has detected 
+that 7468 packets were dumped from a outgoing link of this chip's router. This often occurs when external devices 
+are used in the script but not connected to the communication fabric correctly. These packets may have been 
+reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor 
+on 8, 7 has detected that 7725 packets were dumped from a outgoing link of this chip's router. This often occurs 
+when external devices are used in the script but not connected to the communication fabric correctly. These packets 
+may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The 
+extra monitor on 8, 8 has detected that 5391 packets were dumped from a outgoing link of this chip's router. This 
+often occurs when external devices are used in the script but not connected to the communication fabric correctly. 
+These packets may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 
+WARNING: The extra monitor on 8, 9 has detected that 743 packets were dumped from a outgoing link of this chip's 
+router. This often occurs when external devices are used in the script but not connected to the communication fabric 
+correctly. These packets may have been reinjected multiple times and so this number may be a overestimate. 
+2020-07-14 12:41:51 WARNING: The extra monitor on 9, 4 has detected that 1310 packets were dumped from a outgoing 
+link of this chip's router. This often occurs when external devices are used in the script but not connected to the 
+communication fabric correctly. These packets may have been reinjected multiple times and so this number may be a 
+overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 9, 5 has detected that 2729 packets were dumped from 
+a outgoing link of this chip's router. This often occurs when external devices are used in the script but not 
+connected to the communication fabric correctly. These packets may have been reinjected multiple times and so this 
+number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 9, 6 has detected that 4457 packets 
+were dumped from a outgoing link of this chip's router. This often occurs when external devices are used in the 
+script but not connected to the communication fabric correctly. These packets may have been reinjected multiple 
+times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor on 9, 7 has detected 
+that 4389 packets were dumped from a outgoing link of this chip's router. This often occurs when external devices 
+are used in the script but not connected to the communication fabric correctly. These packets may have been 
+reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The extra monitor 
+on 9, 8 has detected that 2665 packets were dumped from a outgoing link of this chip's router. This often occurs 
+when external devices are used in the script but not connected to the communication fabric correctly. These packets 
+may have been reinjected multiple times and so this number may be a overestimate. 2020-07-14 12:41:51 WARNING: The 
+extra monitor on 9, 9 has detected that 1513 packets were dumped from a outgoing link of this chip's router. This 
+often occurs when external devices are used in the script but not connected to the communication fabric correctly. 
+These packets may have been reinjected multiple times and so this number may be a overestimate.
