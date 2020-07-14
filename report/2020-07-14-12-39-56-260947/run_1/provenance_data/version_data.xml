@@ -1,0 +1,13 @@
+<provenance_data_items name="version_data">
+  <provenance_data_item name="spinn_utilities_version">1!5.1.0</provenance_data_item>
+  <provenance_data_item name="spinn_machine_version">1!5.1.0</provenance_data_item>
+  <provenance_data_item name="spinn_storage_handlers_version">1!5.1.0</provenance_data_item>
+  <provenance_data_item name="spalloc_version">2.0.1</provenance_data_item>
+  <provenance_data_item name="spinnman_version">1!5.1.0</provenance_data_item>
+  <provenance_data_item name="pacman_version">1!5.1.0</provenance_data_item>
+  <provenance_data_item name="data_specification_version">1!5.1.0</provenance_data_item>
+  <provenance_data_item name="front_end_common_version">1!5.1.0</provenance_data_item>
+  <provenance_data_item name="numpy_version">1.18.3</provenance_data_item>
+  <provenance_data_item name="scipy_version">1.4.1</provenance_data_item>
+  <provenance_data_item name="SpiNNakerGraphFrontEnd">1!5.1.0</provenance_data_item>
+</provenance_data_items>
