@@ -78,6 +78,9 @@ static uint32_t current_payload;
 // un-matched packets
 uint unmatched_packets = 0;
 
+//
+uint32_t vertex_index = 0;
+
 // ! position data
 int x_pos = 0;
 int y_pos = 0;
@@ -107,6 +110,7 @@ typedef enum regions_e {
     POSITION,
     NEIGHBOUR_KEYS,
     VELOCITY,
+    VERTEX_INDEX,
     RECORDED_DATA
 } regions_e;
 
@@ -130,6 +134,10 @@ typedef struct position_data {
     uint32_t y_position;
 } position_data_t;
 
+//
+typedef struct vertex_index_data {
+    uint32_t index;
+} vertex_index_data_t;
 
 // diraction = ["me", "n", "w", "s", "e", "nw", "sw", "se", "ne"]
 // keys of its neighbours
@@ -264,35 +272,35 @@ void send_with_masked_key() {
 	uint32_t northeast = float_to_int(fi_star[8]);
 //    log_info("n=%d w=%d s=%d e=%d, nw=%d sw=%d se=%d ne=%d", north, west, south, east, northwest, southwest, southeast, northeast);
 
-
+    spin1_delay_us(spin1_rand()%500);
     while (!spin1_send_mc_packet(my_key, north, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(40);
+    spin1_delay_us(spin1_rand()%500);
     while (!spin1_send_mc_packet(my_key+1, west, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(41);
+    spin1_delay_us(spin1_rand()%500);
     while (!spin1_send_mc_packet(my_key+2, south, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(42);
+    spin1_delay_us(spin1_rand()%500);
     while (!spin1_send_mc_packet(my_key+3, east, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(43);
+    spin1_delay_us(spin1_rand()%500);
     while (!spin1_send_mc_packet(my_key+4, northwest, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(45);
+    spin1_delay_us(spin1_rand()%500);
     while (!spin1_send_mc_packet(my_key+5, southwest, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(41);
+    spin1_delay_us(spin1_rand()%500);
     while (!spin1_send_mc_packet(my_key+6, southeast, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(47);
+    spin1_delay_us(spin1_rand()%500);
     while (!spin1_send_mc_packet(my_key+7, northeast, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
@@ -425,7 +433,7 @@ float calMomentum(float rho, float u_x) {
  * SOURCE
  */
 void receive_data(uint key, uint payload) {
-//    use(key);
+    use(key);
     if (!circular_buffer_add(input_buffer, key)) {
         log_error("Could not add key");
     }
@@ -474,7 +482,7 @@ void update(uint ticks, uint b) {
 
         return;
     }
-    float momentum, mass;
+//    float momentum, mass;
 
     if (time == 0) {
         initFi(fi , rho);
@@ -486,13 +494,14 @@ void update(uint ticks, uint b) {
         send_state();
         read_input_buffer();
         // stream step end
-        mass = calWholeDensity(fi);
-//        recording_record(0, &u_x, sizeof(float));
-        momentum = calMomentum(rho, u_x);
+//        mass = calWholeDensity(fi);
+////        recording_record(0, &u_x, sizeof(float));
+//        momentum = calMomentum(rho, u_x);
         recording_record(0, &(u_x), sizeof(float));
+        recording_record(0, &(u_y), sizeof(float));
     } else {
         // do a safety check on number of states. Not like we can fix it
-        // if we've missed events
+        // if we've missed packets
         do_safety_check();
         computeRho_N_U(&rho, &u_x, &u_y, fi);
         computeFeq(rho, u_x, u_y, feq);
@@ -500,10 +509,14 @@ void update(uint ticks, uint b) {
         // stream step start
         send_state();
         read_input_buffer();
-        mass = calWholeDensity(fi);
-        momentum = calMomentum(rho, u_x);
-        if (time % 10 == 0) {
+        // stream step end
+//        mass = calWholeDensity(fi);
+//        momentum = calMomentum(rho, u_x);
+
+        // for every 10 iterations, store a u_x in to the buffer
+        if (time % 10 ==0 ) {
             recording_record(0, &(u_x), sizeof(float));
+            recording_record(0, &(u_y), sizeof(float));
             recording_do_timestep_update(time);
         }
     }
@@ -563,14 +576,6 @@ static bool initialize(uint32_t *timer_period) {
     neighbour_keys = *neighbour_data_sdram;
 
     log_info("my n key is %d", neighbour_keys.n_key);
-    log_info("my s key is %d", neighbour_keys.s_key);
-    log_info("my w key is %d", neighbour_keys.w_key);
-    log_info("my e key is %d", neighbour_keys.e_key);
-    log_info("my sw key is %d", neighbour_keys.sw_key);
-    log_info("my se key is %d", neighbour_keys.se_key);
-    log_info("my ne key is %d", neighbour_keys.ne_key);
-    log_info("my nw key is %d", neighbour_keys.nw_key);
-
 
     velocity_t *velocity_sdram =
         data_specification_get_region(VELOCITY, data);
@@ -579,6 +584,8 @@ static bool initialize(uint32_t *timer_period) {
     log_info("my U_X = %f", u_x);
     log_info("my U_Y = %f", u_y);
 
+    vertex_index_data_t *vertex_index_sdram = data_specification_get_region(VERTEX_INDEX, data);
+    vertex_index = vertex_index_sdram->index;
 
     // initialise my input_buffer for receiving packets
     input_buffer = circular_buffer_initialize(2048);
