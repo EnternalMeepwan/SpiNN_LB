@@ -67,6 +67,8 @@ class LatticeBasicCell(
 
     VELOCITY_SIZE = 2 * BYTES_PER_WORD  # u_x and u_y
 
+    VERTEX_INDEX_SIZE = BYTES_PER_WORD
+
     # The order of which directions are writeen to sdram
     ORDER_OF_DIRECTIONS = ["N", "W", "S", "E", "NW", "SW", "SE", "NE"]
     # Regions for populations
@@ -77,7 +79,8 @@ class LatticeBasicCell(
                ('POSITION', 2),
                ('NEIGHBOUR_KEYS', 3),
                ('VELOCITY', 4),
-               ('RESULTS', 5)])
+               ('VERTEX_INDEX', 5),
+               ('RESULTS', 6)])
 
     def __init__(self, label, x_position, y_position, u_x, u_y):
         super(LatticeBasicCell, self).__init__(label, "lattice_cell.aplx")
@@ -163,6 +166,11 @@ class LatticeBasicCell(
         )
 
         spec.reserve_memory_region(
+            region=self.DATA_REGIONS.VERTEX_INDEX.value,
+            size=self.VERTEX_INDEX_SIZE
+        )
+
+        spec.reserve_memory_region(
             region=self.DATA_REGIONS.RESULTS.value,
             size=recording_utilities.get_recording_header_size(1))
 
@@ -221,6 +229,8 @@ class LatticeBasicCell(
         # spec.write_value(self._sw_key)
         # spec.write_value(self._se_key)
         # spec.write_value(self._ne_key)
+        spec.switch_write_focus(region=self.DATA_REGIONS.VERTEX_INDEX.value)
+        spec.write_value(machine_graph.vertices.index(self))
 
         # write the neighbour keys and masks
         self._write_key_data(spec, routing_info, machine_graph)
@@ -256,6 +266,7 @@ class LatticeBasicCell(
                        self.POSITION_DATA_SIZE +
                        self.NEIGHBOUR_KEYS_SIZE +
                        self.VELOCITY_SIZE +
+                       self.VERTEX_INDEX_SIZE +
                        recording_utilities.get_recording_header_size(1) +
                        recording_utilities.get_recording_data_constant_size(1))
         per_timestep_sdram = self.RECORDING_ELEMENT_SIZE
