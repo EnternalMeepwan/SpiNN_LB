@@ -14,7 +14,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import math
 import os
-# from pacman.model.graphs.machine import MachineEdge
+#from pacman.model.graphs.machine import MachineEdge
+from LatticeBasicCell import LatticeBasicCell
+from LatticeEdge import LatticeEdge 
 
 import spinnaker_graph_front_end as front_end
 
