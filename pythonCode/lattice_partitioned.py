@@ -18,32 +18,30 @@ import os
 
 import spinnaker_graph_front_end as front_end
 
-
-runtime = 500
+# 12000
+runtime = 120000
 time_step = 10000
-MAX_X_SIZE_OF_FABRIC = 10
-MAX_Y_SIZE_OF_FABRIC = 10
-n_chips = (MAX_X_SIZE_OF_FABRIC * MAX_Y_SIZE_OF_FABRIC) // 15
+MAX_X_SIZE_OF_FABRIC = 128
+MAX_Y_SIZE_OF_FABRIC = 128
+n_chips = (MAX_X_SIZE_OF_FABRIC * MAX_Y_SIZE_OF_FABRIC) // 10
 
 ex = [0, 1, 0, -1, 0, 1, -1, -1, 1]
 ey = [0, 0, 1, 0, -1, 1, 1, -1, -1]
 
 
-def generatePositionMap(x_dim, y_dim):
-    positionMap = {}
-    #   diraction = ["me", "n", "w", "s", "e", "nw", "sw", "se", "ne"]
-    for i in range(9):
-        x_temp = int(x_dim - ex[i]) % MAX_X_SIZE_OF_FABRIC
-        y_temp = int(y_dim - ey[i]) % MAX_Y_SIZE_OF_FABRIC
-        positionMap[i] = (x_temp, y_temp)
-    return positionMap
-
-
-def generateKeys(position):
-    return position[0] * MAX_X_SIZE_OF_FABRIC + position[1]
-
 
 def initVelocity(x_pos, y_pos):
+    """
+    Init the velocity u, v = (u_x, u_y)
+  
+    ydim = xdim = N = 128
+    K = 30 / N
+    delta = 0.05
+  
+    u = tanh( K (y - 0.25 * ydim) ) for y <= 0.5 * ydim 
+    u = U_0 tanh( K (0.75 * ydim - y) ) for y >  0.5 * ydim
+    v = delta sin( 2pi *x / xdim )
+    """
     U_0 = 0.01
     K = 30.0
     delta = 0.05
@@ -53,19 +51,18 @@ def initVelocity(x_pos, y_pos):
         u_x = U_0 * math.tanh(K * (y_temp - 0.25))
     else:
         u_x = U_0 * math.tanh(K * (0.75 - y_temp))
-    #     print("the u_x of ({}, {}) is {}".format(x_pos, y_pos, u_x))
     u_y = U_0 * delta * math.sin(2 * math.pi * (x_temp + 0.25))
-    #     print("the u_y of ({}, {}) is {}".format(x_pos, y_pos, u_y))
     return u_x, u_y
 
 
 # set up the front end and ask for the detected machines dimensions
 front_end.setup(
-    n_chips_required=n_chips, model_binary_folder=os.path.dirname(os.path.abspath("__file__")), machine_time_step=time_step)
+    n_chips_required=n_chips, model_binary_folder=os.path.dirname(os.path.abspath("__file__")), machine_time_step=time_step,time_scale_factor=10)
 
 # figure out if machine can handle simulation
 cores = front_end.get_number_of_available_cores_on_machine()
-# print(cores)
+
+# chech if there is enough cores
 if cores <= (MAX_X_SIZE_OF_FABRIC * MAX_Y_SIZE_OF_FABRIC):
     raise KeyError("Don't have enough cores to run simulation")
 
@@ -78,26 +75,15 @@ vertices = [
 for x in range(0, MAX_X_SIZE_OF_FABRIC):
     for y in range(0, MAX_Y_SIZE_OF_FABRIC):
         u_x, u_y = initVelocity(x, y)
-#         keymap = generatePositionMap(x, y)
         vert = LatticeBasicCell(
             "cell{}".format((x * MAX_X_SIZE_OF_FABRIC) + y),
             x, y, u_x, u_y)
         vertices[x][y] = vert
         front_end.add_machine_vertex_instance(vert)
 
-# verify the initial state
-output = ""
-for x in range(0, MAX_X_SIZE_OF_FABRIC):
-    for y in range(0, MAX_Y_SIZE_OF_FABRIC):
-        output += "({0}, {1}) ".format(vertices[x][y].x_position, vertices[x][y].y_position)
-    output += "\n"
-print(output)
-print("\n\n")
-
 # build edges
 for x in range(0, MAX_X_SIZE_OF_FABRIC):
     for y in range(0, MAX_Y_SIZE_OF_FABRIC):
-#         keymap = generatePositionMap(x, y)
         #   diraction = ["me", "n", "w", "s", "e", "nw", "sw", "se", "ne"]
         positions = [
             (x, (y + 1) % MAX_Y_SIZE_OF_FABRIC, "E"),
@@ -115,7 +101,7 @@ for x in range(0, MAX_X_SIZE_OF_FABRIC):
 
          # build edges for each direction for this vertex
         for (dest_x, dest_y, compass) in positions:
-            front_end.add_machine_edge_instance(LatticeBasicCell( vertices[x][y], vertices[dest_x][dest_y],compass, "edge between {} and {}".format(vertices[x][y],_vertices[dest_x][dest_y])), LatticeBasicCell.PARTITION_ID)
+            front_end.add_machine_edge_instance(LatticeEdge( vertices[x][y], vertices[dest_x][dest_y],compass, "edge between {} and {}".format(vertices[x][y], vertices[dest_x][dest_y])), LatticeBasicCell.PARTITION_ID)
             vertices[x][y].set_direction_vertex(direction=compass, vertex=vertices[dest_x][dest_y])
 
 # run the simulation
@@ -134,17 +120,6 @@ for x in range(0, MAX_X_SIZE_OF_FABRIC):
             front_end.buffer_manager(),
             front_end.placements().get_placement_of_vertex(
                 vertices[x][y]))
-
-# visualise it in text form (bad but no vis this time)
-for time in range(0, runtime*1000//time_step):
-    print("at time {}".format(time))
-    output = ""
-    for x in range(0, MAX_Y_SIZE_OF_FABRIC):
-        for y in range(0, MAX_Y_SIZE_OF_FABRIC):
-            output += "{} ".format(recorded_data[x, y][time])
-        output += "\n"
-    print(output)
-    print("\n\n")
 
 # clear the machine
 front_end.stop()
