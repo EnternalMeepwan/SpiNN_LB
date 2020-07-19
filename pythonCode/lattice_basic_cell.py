@@ -50,18 +50,18 @@ class LatticeBasicCell(
     AbstractReceiveBuffersToHost,
     AbstractProvidesNKeysForPartition
 ):
-    """ Cell which represents a cell within the 2d fabric
+    """ A Boltzmann Lattice which represents a cell within the 2d fabric
     """
-
+    
     PARTITION_ID = "STATE"
 
     TRANSMISSION_DATA_SIZE = 2 * BYTES_PER_WORD  # has key and key
     STATE_DATA_SIZE = BYTES_PER_WORD  # 1 or 2 based off dead or alive
     # alive states, dead states
     NEIGHBOUR_INITIAL_STATES_SIZE = 2 * BYTES_PER_WORD
-    RECORDING_ELEMENT_SIZE = STATE_DATA_SIZE  # A recording of the state
+    RECORDING_ELEMENT_SIZE = STATE_DATA_SIZE  # A recording of the volocity
 
-    POSITION_DATA_SIZE = 2 * BYTES_PER_WORD
+    POSITION_DATA_SIZE = 2 * BYTES_PER_WORD # x position and y position
 
     NEIGHBOUR_KEYS_SIZE = 9 * BYTES_PER_WORD  # for 8 directions and a mask
 
@@ -88,14 +88,6 @@ class LatticeBasicCell(
         # app specific data items
         self._x_position = x_position
         self._y_position = y_position
-        # self._n_key = n_key
-        # self._s_key = s_key
-        # self._w_key = w_key
-        # self._e_key = e_key
-        # self._nw_key = nw_key
-        # self._ne_key = ne_key
-        # self._sw_key = sw_key
-        # self._se_key = se_key
         self.u_x = u_x
         self.u_y = u_y
 
@@ -110,6 +102,9 @@ class LatticeBasicCell(
         self._loccation_vertices[direction] = vertex
 
     def _write_key_data(self, spec, routing_info, graph):
+        """
+        Write the keys of its 8 neighbours
+        """
         spec.switch_write_focus(region=self.DATA_REGIONS.NEIGHBOUR_KEYS.value)
         incoming_edges = graph.get_edges_ending_at_vertex_with_partition_name(self, self.PARTITION_ID)
 
@@ -145,7 +140,7 @@ class LatticeBasicCell(
         generate_system_data_region(spec, self.DATA_REGIONS.SYSTEM.value,
                                     self, machine_time_step, time_scale_factor)
 
-        # reserve memory regions
+        # reserve memory regions for every data region
         spec.reserve_memory_region(
             region=self.DATA_REGIONS.TRANSMISSIONS.value,
             size=self.TRANSMISSION_DATA_SIZE, label="inputs")
@@ -216,25 +211,14 @@ class LatticeBasicCell(
         spec.write_value(int(self._x_position))
         spec.write_value(int(self._y_position))
 
-        # write neighbour keys
-        # diraction = ["me", "n", "w", "s", "e", "nw", "sw", "se", "ne"]
-        # spec.switch_write_focus(
-        #     region=self.DATA_REGIONS.NEIGHBOUR_KEYS.value
-        # )
-        # spec.write_value(self._n_key)
-        # spec.write_value(self._w_key)
-        # spec.write_value(self._s_key)
-        # spec.write_value(self._e_key)
-        # spec.write_value(self._nw_key)
-        # spec.write_value(self._sw_key)
-        # spec.write_value(self._se_key)
-        # spec.write_value(self._ne_key)
+        #write VERTEX_INDEX data. Mainly for add a random delay
         spec.switch_write_focus(region=self.DATA_REGIONS.VERTEX_INDEX.value)
         spec.write_value(machine_graph.vertices.index(self))
 
         # write the neighbour keys and masks
         self._write_key_data(spec, routing_info, machine_graph)
 
+        #write velocity data in two dimension, x and y
         spec.switch_write_focus(region=self.DATA_REGIONS.VELOCITY.value)
         spec.write_value(self.u_x, data_type=DataType.FLOAT_32)
         spec.write_value(self.u_y, data_type=DataType.FLOAT_32)
@@ -262,6 +246,9 @@ class LatticeBasicCell(
     @property
     @overrides(MachineVertex.resources_required)
     def resources_required(self):
+        """
+        Reserve resources for data regions
+        """
         fixed_sdram = (SYSTEM_BYTES_REQUIREMENT + self.TRANSMISSION_DATA_SIZE +
                        self.POSITION_DATA_SIZE +
                        self.NEIGHBOUR_KEYS_SIZE +
@@ -279,6 +266,9 @@ class LatticeBasicCell(
 
     @overrides(AbstractProvidesNKeysForPartition.get_n_keys_for_partition)
     def get_n_keys_for_partition(self, partition, graph_mapper):
+        """
+        Ask for 8 keys for every lattice for the transmission of 8 fi
+        """
         return 8  # for its 8 neighbours to send
 
     @property
