@@ -39,6 +39,8 @@ from spinnaker_graph_front_end.utilities.data_utils import (
 
 from data_specification.enums.data_type import DataType
 
+import spinnaker_graph_front_end as front_end
+
 from spinn_front_end_common.utilities import exceptions
 import logging
 
@@ -67,7 +69,7 @@ class LatticeBasicCell(
 
     VELOCITY_SIZE = 2 * BYTES_PER_WORD  # u_x and u_y
 
-    VERTEX_INDEX_SIZE = BYTES_PER_WORD
+    VERTEX_INDEX_SIZE = 2 * BYTES_PER_WORD # the index of the lattice in the network
 
     # The order of which directions are writeen to sdram
     ORDER_OF_DIRECTIONS = ["N", "W", "S", "E", "NW", "SW", "SE", "NE"]
@@ -90,7 +92,7 @@ class LatticeBasicCell(
         self._y_position = y_position
         self.u_x = u_x
         self.u_y = u_y
-
+        
         self._loccation_vertices = OrderedDict()
         for direction in self.ORDER_OF_DIRECTIONS:
             self._loccation_vertices[direction] = None
@@ -214,6 +216,8 @@ class LatticeBasicCell(
         #write VERTEX_INDEX data. Mainly for add a random delay
         spec.switch_write_focus(region=self.DATA_REGIONS.VERTEX_INDEX.value)
         spec.write_value(machine_graph.vertices.index(self))
+        self.offset = generate_offset(placement.p)
+        spec.write_value(self.offset)
 
         # write the neighbour keys and masks
         self._write_key_data(spec, routing_info, machine_graph)
