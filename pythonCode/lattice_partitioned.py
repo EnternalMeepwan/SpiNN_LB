@@ -14,22 +14,18 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import math
 import os
-#from pacman.model.graphs.machine import MachineEdge
-from LatticeBasicCell import LatticeBasicCell
-from LatticeEdge import LatticeEdge 
+# from pacman.model.graphs.machine import MachineEdge
 
 import spinnaker_graph_front_end as front_end
 
 # 12000
-runtime = 120000
-time_step = 10000
+
 MAX_X_SIZE_OF_FABRIC = 128
 MAX_Y_SIZE_OF_FABRIC = 128
 n_chips = (MAX_X_SIZE_OF_FABRIC * MAX_Y_SIZE_OF_FABRIC) // 10
 
 ex = [0, 1, 0, -1, 0, 1, -1, -1, 1]
 ey = [0, 0, 1, 0, -1, 1, 1, -1, -1]
-
 
 
 def initVelocity(x_pos, y_pos):
@@ -59,7 +55,7 @@ def initVelocity(x_pos, y_pos):
 
 # set up the front end and ask for the detected machines dimensions
 front_end.setup(
-    n_chips_required=n_chips, model_binary_folder=os.path.dirname(os.path.abspath("__file__")), machine_time_step=time_step,time_scale_factor=10)
+    n_chips_required=n_chips, model_binary_folder=os.path.dirname(os.path.abspath("__file__")), machine_time_step=time_step,time_scale_factor=time_scale_factor)
 
 # figure out if machine can handle simulation
 cores = front_end.get_number_of_available_cores_on_machine()
@@ -122,6 +118,5 @@ for x in range(0, MAX_X_SIZE_OF_FABRIC):
             front_end.buffer_manager(),
             front_end.placements().get_placement_of_vertex(
                 vertices[x][y]))
-
 # clear the machine
 front_end.stop()
