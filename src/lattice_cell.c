@@ -131,6 +131,7 @@ typedef struct position_data {
 //
 typedef struct vertex_index_data {
     uint32_t index;
+    uint32_t time_offset;
 } vertex_index_data_t;
 
 // diraction = ["me", "n", "w", "s", "e", "nw", "sw", "se", "ne"]
@@ -269,35 +270,35 @@ void send_with_masked_key()
     uint32_t southeast = float_to_int(fi_star[7]);
     uint32_t northeast = float_to_int(fi_star[8]);
 
-    spin1_delay_us(vertex_index % 8000);
+    spin1_delay_us(vertex_index % 400);
     while (!spin1_send_mc_packet(my_key, north, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 8000);
+    spin1_delay_us(vertex_index % 400);
     while (!spin1_send_mc_packet(my_key + 1, west, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 8000);
+    spin1_delay_us(vertex_index % 400);
     while (!spin1_send_mc_packet(my_key + 2, south, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 8000);
+    spin1_delay_us(vertex_index % 400);
     while (!spin1_send_mc_packet(my_key + 3, east, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 8000);
+    spin1_delay_us(vertex_index % 400);
     while (!spin1_send_mc_packet(my_key + 4, northwest, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 8000);
+    spin1_delay_us(vertex_index % 400);
     while (!spin1_send_mc_packet(my_key + 5, southwest, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 8000);
+    spin1_delay_us(vertex_index % 400);
     while (!spin1_send_mc_packet(my_key + 6, southeast, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 8000);
+    spin1_delay_us(vertex_index % 400);
     while (!spin1_send_mc_packet(my_key + 7, northeast, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
@@ -315,9 +316,9 @@ void send_state(void)
     // diraction = ["n", "w", "s", "e", "nw", "sw", "se", "ne"]
 
     // add a random delay here
-    spin1_delay_us(vertex_index % 1000);
+    spin1_delay_us(vertex_index % 100);
     send_with_masked_key();
-    log_info("sent my state via multicast at %d", time);
+//    log_info("sent my state via multicast at %d", time);
 }
 
 /*
@@ -503,7 +504,7 @@ void receive_data_void(uint key, uint unknown)
     log_error("this should never ever be done");
 }
 
-static bool initialize(uint32_t* timer_period)
+static bool initialize(uint32_t* timer_period, uint32_t* timer_offset)
 {
     log_info("Initialise: started");
 
@@ -554,7 +555,10 @@ static bool initialize(uint32_t* timer_period)
 
     vertex_index_data_t* vertex_index_sdram = data_specification_get_region(VERTEX_INDEX, data);
     vertex_index = vertex_index_sdram->index;
+    *timer_offset = vertex_index_sdram->time_offset;
     log_info("vertex_index = %d", vertex_index);
+
+
 
     // initialise my input_buffer for receiving packets
     input_buffer = circular_buffer_initialize(2048);
@@ -585,17 +589,18 @@ void c_main(void)
     log_info("starting lattice cell");
 
     // Load DTCM data
-    uint32_t timer_period;
+    uint32_t timer_period, timer_offset;
 
     // initialise the model
-    if (!initialize(&timer_period)) {
+    if (!initialize(&timer_period, &timer_offset)) {
         log_error("Error in initialisation - exiting!");
         rt_error(RTE_SWERR);
     }
 
     // set timer tick value to configured value
     log_info("setting timer to execute every %d microseconds", timer_period);
-    spin1_set_timer_tick(timer_period);
+    log_info("setting timer offset as %d microsends", timer_offset);
+    spin1_set_timer_tick_and_phase(timer_period, timer_offset);
 
     // register callbacks
     spin1_callback_on(MCPL_PACKET_RECEIVED, receive_data, MC_PACKET);
