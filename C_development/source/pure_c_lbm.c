@@ -3,11 +3,13 @@
 #include <string.h>
 #include <unistd.h>
 #include <math.h>
+#include <time.h>
+#include <sys/time.h>
 
 #define Q 9
 // define the problem size
-#define xdim 128
-#define ydim 128
+#define xdim 512
+#define ydim 512
 
 // Define velocity vectors
 const int ex[Q] = {0, 1, 0, -1, 0, 1, -1, -1, 1};
@@ -410,6 +412,13 @@ void showTheParameters(int maxiteration, double nu, double tau)
     printf("Simulation Start:\n");
 }
 
+float getTime(void) {
+    struct timeval tp;
+    gettimeofday(&tp, NULL);
+    return tp.tv_sec + tp.tv_usec / (float) 1.0e6;
+    
+}
+
 int main(int argc, char const *argv[])
 {
 
@@ -418,6 +427,8 @@ int main(int argc, char const *argv[])
     int iterations = 0;
     double nu = 0.000128;
     double tau = (1 + nu * 6) / 2;
+    float tstart, tend;
+    tstart = getTime();
     initRho_N_U(u_x, u_y, rho);
     initFi(fi, rho);
     computeFeq(rho, u_x, u_y, feq);
@@ -431,6 +442,8 @@ int main(int argc, char const *argv[])
         checkCorrectness(iterations, rho, u_x, u_y, fi, mass);
         iterations++;
     }
+    tend = getTime();
+    printf("The running time is %f", tend - tstart);
     calVorticity(u_x, u_y);
     return 0;
 }
