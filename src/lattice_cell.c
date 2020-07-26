@@ -38,7 +38,7 @@ int ey[Q] = { 0, 0, 1, 0, -1, 1, 1, -1, -1 };
 
 // fi
 float fi[Q];
-// equalitium distribution function
+// equilibrium distribution function
 float feq[Q];
 // post distribution function
 float fi_star[Q];
@@ -128,6 +128,9 @@ typedef struct position_data {
     uint32_t y_position;
 } position_data_t;
 
+// timer offset
+uint32_t timer_offset_wei;
+
 //
 typedef struct vertex_index_data {
     uint32_t index;
@@ -176,12 +179,12 @@ void do_safety_check(void)
     cpsr = spin1_int_disable();
     log_info("the unmatched_packets is %d", unmatched_packets);
     if (!(received_packets[0] && received_packets[1] && received_packets[2] && received_packets[3] && received_packets[4] && received_packets[5] && received_packets[6] && received_packets[7])) {
-        log_error("didn't receive the correct number of fi_star");
+        log_error("didn't receive the correct number of fi_star at time %d, my time offset my timer offset is %d", time, timer_offset_wei);
         rt_error(RTE_SWERR);
     }
 
     if (unmatched_packets != 56) {
-        log_error("did not receive the correct number of un_matched fi_star");
+        log_error("did not receive the correct number of un_matched fi_star at time %d", time);
         rt_error(RTE_SWERR);
     }
     spin1_mode_restore(cpsr);
@@ -198,7 +201,7 @@ void read_input_buffer(void)
         for (uint32_t counter = 0; counter < 10000; counter++) {
             //do nothing
         }
-        spin1_delay_us(spin1_rand() % 20);
+        spin1_delay_us(1);
     }
     cpsr = spin1_int_disable();
 
@@ -270,35 +273,37 @@ void send_with_masked_key()
     uint32_t southeast = float_to_int(fi_star[7]);
     uint32_t northeast = float_to_int(fi_star[8]);
 
-    spin1_delay_us(vertex_index % 400);
+    uint32_t delay = vertex_index % 400;
+
+    spin1_delay_us(delay);
     while (!spin1_send_mc_packet(my_key, north, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 400);
+    spin1_delay_us(delay);
     while (!spin1_send_mc_packet(my_key + 1, west, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 400);
+    spin1_delay_us(delay);
     while (!spin1_send_mc_packet(my_key + 2, south, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 400);
+    spin1_delay_us(delay);
     while (!spin1_send_mc_packet(my_key + 3, east, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 400);
+    spin1_delay_us(delay);
     while (!spin1_send_mc_packet(my_key + 4, northwest, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 400);
+    spin1_delay_us(delay);
     while (!spin1_send_mc_packet(my_key + 5, southwest, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 400);
+    spin1_delay_us(delay);
     while (!spin1_send_mc_packet(my_key + 6, southeast, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
-    spin1_delay_us(vertex_index % 400);
+    spin1_delay_us(delay);
     while (!spin1_send_mc_packet(my_key + 7, northeast, WITH_PAYLOAD)) {
         spin1_delay_us(1);
     }
@@ -314,9 +319,9 @@ void send_state(void)
     }
     unmatched_packets = 0;
     // diraction = ["n", "w", "s", "e", "nw", "sw", "se", "ne"]
-
+    uint delay = vertex_index % 100;
     // add a random delay here
-    spin1_delay_us(vertex_index % 100);
+    spin1_delay_us(delay);
     send_with_masked_key();
 //    log_info("sent my state via multicast at %d", time);
 }
@@ -454,7 +459,7 @@ void update(uint ticks, uint b)
 
     time++;
 
-    log_info("on tick %d of %d", time, simulation_ticks);
+//    log_info("on tick %d of %d", time, simulation_ticks);
 
     // check that the run time hasn't already elapsed and thus needs to be
     // killed
@@ -605,7 +610,7 @@ void c_main(void)
     // register callbacks
     spin1_callback_on(MCPL_PACKET_RECEIVED, receive_data, MC_PACKET);
     spin1_callback_on(TIMER_TICK, update, TIMER);
-
+    timer_offset_wei = timer_offset;
     // start execution
     log_info("Starting\n");
 
