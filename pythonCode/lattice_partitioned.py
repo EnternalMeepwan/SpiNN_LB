@@ -20,8 +20,8 @@ import spinnaker_graph_front_end as front_end
 
 # 12000
 
-MAX_X_SIZE_OF_FABRIC = 128
-MAX_Y_SIZE_OF_FABRIC = 128
+MAX_X_SIZE_OF_FABRIC = 256
+MAX_Y_SIZE_OF_FABRIC = 256
 n_chips = (MAX_X_SIZE_OF_FABRIC * MAX_Y_SIZE_OF_FABRIC) // 10
 
 ex = [0, 1, 0, -1, 0, 1, -1, -1, 1]
