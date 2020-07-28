@@ -67,30 +67,29 @@ Id,Preface,Original
 65,[ERROR] (data_specification.c: 66): ,Magic number is incorrect: %08x
 66,[ERROR] (data_specification.c: 71): ,Version number is incorrect: %08x
 67,[INFO] (data_specification.c: 78): ,magic = %08x, version = %d.%d
-12001,[INFO] (lattice_cell.c: 176): ,the unmatched_packets is %d
-12002,[ERROR] (lattice_cell.c: 178): ,didn't receive the correct number of fi_star
-12003,[ERROR] (lattice_cell.c: 183): ,did not receive the correct number of un_matched fi_star
-12004,[INFO] (lattice_cell.c: 252): ,I did not get the key
-12005,[INFO] (lattice_cell.c: 254): ,I did not get the payload
-12006,[INFO] (lattice_cell.c: 320): ,sent my state via multicast at %d
-12007,[ERROR] (lattice_cell.c: 433): ,Could not add key
-12008,[ERROR] (lattice_cell.c: 436): ,Could not add payload
-12009,[INFO] (lattice_cell.c: 456): ,on tick %d of %d
-12010,[INFO] (lattice_cell.c: 467): ,updating recording regions
-12011,[INFO] (lattice_cell.c: 471): ,Simulation complete.
-12012,[ERROR] (lattice_cell.c: 503): ,this should never ever be done
-12013,[INFO] (lattice_cell.c: 508): ,Initialise: started
-12014,[ERROR] (lattice_cell.c: 515): ,failed to read the data spec header
-12015,[ERROR] (lattice_cell.c: 532): ,this lattice cell can't affect anything, deduced as an error,please fix the application fabric and try again
-12016,[INFO] (lattice_cell.c: 536): ,my key is %d
-12017,[INFO] (lattice_cell.c: 542): ,I'm in position ( %d, %d)
-12018,[INFO] (lattice_cell.c: 547): ,my n key is %d
-12019,[INFO] (lattice_cell.c: 552): ,my U_X = %f
-12020,[INFO] (lattice_cell.c: 553): ,my U_Y = %f
-12021,[INFO] (lattice_cell.c: 557): ,vertex_index = %d
-12022,[INFO] (lattice_cell.c: 564): ,input_buffer initialised
-12023,[INFO] (lattice_cell.c: 568): ,Recording flags = 0x%08x
-12024,[INFO] (lattice_cell.c: 585): ,starting lattice cell
-12025,[ERROR] (lattice_cell.c: 592): ,Error in initialisation - exiting!
-12026,[INFO] (lattice_cell.c: 597): ,setting timer to execute every %d microseconds
-12027,[INFO] (lattice_cell.c: 605): ,Starting\n
+12001,[INFO] (lattice_cell.c: 180): ,the unmatched_packets is %d
+12002,[ERROR] (lattice_cell.c: 182): ,didn't receive the correct number of fi_star at time %d, my time offset my timer offset is %d
+12003,[ERROR] (lattice_cell.c: 187): ,did not receive the correct number of un_matched fi_star at time %d
+12004,[INFO] (lattice_cell.c: 256): ,I did not get the key
+12005,[INFO] (lattice_cell.c: 258): ,I did not get the payload
+12006,[ERROR] (lattice_cell.c: 439): ,Could not add key
+12007,[ERROR] (lattice_cell.c: 442): ,Could not add payload
+12008,[INFO] (lattice_cell.c: 473): ,updating recording regions
+12009,[INFO] (lattice_cell.c: 477): ,Simulation complete.
+12010,[ERROR] (lattice_cell.c: 509): ,this should never ever be done
+12011,[INFO] (lattice_cell.c: 514): ,Initialise: started
+12012,[ERROR] (lattice_cell.c: 521): ,failed to read the data spec header
+12013,[ERROR] (lattice_cell.c: 538): ,this lattice cell can't affect anything, deduced as an error,please fix the application fabric and try again
+12014,[INFO] (lattice_cell.c: 542): ,my key is %d
+12015,[INFO] (lattice_cell.c: 548): ,I'm in position ( %d, %d)
+12016,[INFO] (lattice_cell.c: 553): ,my n key is %d
+12017,[INFO] (lattice_cell.c: 558): ,my U_X = %f
+12018,[INFO] (lattice_cell.c: 559): ,my U_Y = %f
+12019,[INFO] (lattice_cell.c: 564): ,vertex_index = %d
+12020,[INFO] (lattice_cell.c: 573): ,input_buffer initialised
+12021,[INFO] (lattice_cell.c: 577): ,Recording flags = 0x%08x
+12022,[INFO] (lattice_cell.c: 594): ,starting lattice cell
+12023,[ERROR] (lattice_cell.c: 601): ,Error in initialisation - exiting!
+12024,[INFO] (lattice_cell.c: 606): ,setting timer to execute every %d microseconds
+12025,[INFO] (lattice_cell.c: 607): ,setting timer offset as %d microsends
+12026,[INFO] (lattice_cell.c: 615): ,Starting\n
