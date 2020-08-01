@@ -8,4 +8,7 @@ cores_per_chip = 10
 
 max_offset = 1500
 def generate_offset(processor):
-    return min(math.ceil((processor - random.random()) / (cores_per_chip+4) * max_offset), max_offset)
+    delay = math.ceil((processor - random.random()) / (cores_per_chip+4) * max_offset)
+    if delay > max_offset:
+        delay = max_offset - random.random() / (cores_per_chip) * max_offset
+    return int(delay)
