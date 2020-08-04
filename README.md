@@ -1,7 +1,7 @@
 # SpiNN_LB
 
 # Development Environment/ Dependency
-The SpiNNaker is a dependency-hungry program. The whole development is under the following version of SpiNNaker software version and do not guarantee to run at any other version.
+The SpiNNaker is a dependency-hungry program. The whole development is under the following version of SpiNNaker software and do not guarantee to run at any other version.
 
 
 
