@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-lm -O3
+CFLAGS=-lm
 
 spinn_c: pure_c_lbm.c
 	$(CC) -o spinn_c pure_c_lbm.c $(CFLAGS)

@@ -1,11 +1,14 @@
+import math
+import random
+random.seed(100)
 runtime = 12000
 time_step = 1000
-time_scale_factor = 10
+time_scale_factor = 5
 cores_per_chip = 10
-_max_offset_factor = 0.2
-max_offset = int(time_step * time_scale_factor * _max_offset_factor)
 
-# generate the timer offset for a processor
+max_offset = 1500
 def generate_offset(processor):
-    return int(
-        math.ceil(max_offset / cores_per_chip) * processor)
+    delay = math.ceil((processor - random.random()) / (cores_per_chip+4) * max_offset)
+    if delay > max_offset:
+        delay = max_offset - random.random() / (cores_per_chip) * max_offset
+    return int(delay)

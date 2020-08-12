@@ -75,21 +75,21 @@ Id,Preface,Original
 12006,[ERROR] (lattice_cell.c: 439): ,Could not add key
 12007,[ERROR] (lattice_cell.c: 442): ,Could not add payload
 12008,[INFO] (lattice_cell.c: 473): ,updating recording regions
-12009,[INFO] (lattice_cell.c: 477): ,Simulation complete.
-12010,[ERROR] (lattice_cell.c: 509): ,this should never ever be done
-12011,[INFO] (lattice_cell.c: 514): ,Initialise: started
-12012,[ERROR] (lattice_cell.c: 521): ,failed to read the data spec header
-12013,[ERROR] (lattice_cell.c: 538): ,this lattice cell can't affect anything, deduced as an error,please fix the application fabric and try again
-12014,[INFO] (lattice_cell.c: 542): ,my key is %d
-12015,[INFO] (lattice_cell.c: 548): ,I'm in position ( %d, %d)
-12016,[INFO] (lattice_cell.c: 553): ,my n key is %d
-12017,[INFO] (lattice_cell.c: 558): ,my U_X = %f
-12018,[INFO] (lattice_cell.c: 559): ,my U_Y = %f
-12019,[INFO] (lattice_cell.c: 564): ,vertex_index = %d
-12020,[INFO] (lattice_cell.c: 573): ,input_buffer initialised
-12021,[INFO] (lattice_cell.c: 577): ,Recording flags = 0x%08x
-12022,[INFO] (lattice_cell.c: 594): ,starting lattice cell
-12023,[ERROR] (lattice_cell.c: 601): ,Error in initialisation - exiting!
-12024,[INFO] (lattice_cell.c: 606): ,setting timer to execute every %d microseconds
-12025,[INFO] (lattice_cell.c: 607): ,setting timer offset as %d microsends
-12026,[INFO] (lattice_cell.c: 615): ,Starting\n
+12009,[INFO] (lattice_cell.c: 480): ,Simulation complete.
+12010,[ERROR] (lattice_cell.c: 511): ,this should never ever be done
+12011,[INFO] (lattice_cell.c: 516): ,Initialise: started
+12012,[ERROR] (lattice_cell.c: 523): ,failed to read the data spec header
+12013,[ERROR] (lattice_cell.c: 540): ,this lattice cell can't affect anything, deduced as an error,please fix the application fabric and try again
+12014,[INFO] (lattice_cell.c: 544): ,my key is %d
+12015,[INFO] (lattice_cell.c: 550): ,I'm in position ( %d, %d)
+12016,[INFO] (lattice_cell.c: 555): ,my n key is %d
+12017,[INFO] (lattice_cell.c: 560): ,my U_X = %f
+12018,[INFO] (lattice_cell.c: 561): ,my U_Y = %f
+12019,[INFO] (lattice_cell.c: 566): ,vertex_index = %d
+12020,[INFO] (lattice_cell.c: 575): ,input_buffer initialised
+12021,[INFO] (lattice_cell.c: 579): ,Recording flags = 0x%08x
+12022,[INFO] (lattice_cell.c: 596): ,starting lattice cell
+12023,[ERROR] (lattice_cell.c: 603): ,Error in initialisation - exiting!
+12024,[INFO] (lattice_cell.c: 608): ,setting timer to execute every %d microseconds
+12025,[INFO] (lattice_cell.c: 609): ,setting timer offset as %d microsends
+12026,[INFO] (lattice_cell.c: 617): ,Starting\n
