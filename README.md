@@ -22,5 +22,3 @@ The SpiNNaker is a dependency-hungry program. The whole development is under the
 | SpiNNakerGraphFrontEnd |                        | 21d1885   |
 | spinnaker_tools        | SpiNNaker 5.0.0 v3.2.5 | 12e29c5   |
 
-## Can't get the right version of SpiNNaker?
-  You can still view the result via vidio:
