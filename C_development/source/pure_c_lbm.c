@@ -8,35 +8,35 @@
 
 #define Q 9
 // define the problem size
-#define xdim 512
-#define ydim 512
+#define xdim 128
+#define ydim 128
 
 // Define velocity vectors
 const int ex[Q] = {0, 1, 0, -1, 0, 1, -1, -1, 1};
 const int ey[Q] = {0, 0, 1, 0, -1, 1, 1, -1, -1};
 
 // fi
-double fi[xdim + 2][ydim + 2][Q];
-double feq[xdim + 2][ydim + 2][Q];
-double fi_star[xdim + 2][ydim + 2][Q] = {0.0};
+float fi[xdim + 2][ydim + 2][Q];
+float feq[xdim + 2][ydim + 2][Q];
+float fi_star[xdim + 2][ydim + 2][Q] = {0.0};
 
 // Wi
-const double wi[Q] = {4.0 / 9.0, 1.0 / 9.0, 1.0 / 9.0, 1.0 / 9.0, 1.0 / 9.0, 1.0 / 36.0, 1.0 / 36.0, 1.0 / 36.0, 1.0 / 36.0};
+const float wi[Q] = {4.0 / 9.0, 1.0 / 9.0, 1.0 / 9.0, 1.0 / 9.0, 1.0 / 9.0, 1.0 / 36.0, 1.0 / 36.0, 1.0 / 36.0, 1.0 / 36.0};
 
 // macro fluid density rho
-double rho[xdim + 2][ydim + 2];
+float rho[xdim + 2][ydim + 2];
 
-double u_x[xdim + 2][ydim + 2] = {0.001};
-double u_y[xdim + 2][ydim + 2] = {1.0};
+float u_x[xdim + 2][ydim + 2] = {0.001};
+float u_y[xdim + 2][ydim + 2] = {1.0};
 
 // parameters for check
-double mass = 0.0;
+float mass = 0.0;
 
 // parameter for the checking problem
-double U_0 = 0.01;
-double K = 30.0;
-double delta = 0.05;
-double cVel = 1 / sqrt(3); // c_s
+float U_0 = 0.01;
+float K = 30.0;
+float delta = 0.05;
+float cVel = 1 / sqrt(3); // c_s
 
 /*
  * Init the velocity u, v = (u_x, u_y)
@@ -50,15 +50,15 @@ double cVel = 1 / sqrt(3); // c_s
  * 
  * v = delta sin( 2pi *x / xdim )
 */
-void initRho_N_U(double (*u_x)[ydim + 2], double (*u_y)[ydim + 2], double (*rho)[ydim + 2])
+void initRho_N_U(float (*u_x)[ydim + 2], float (*u_y)[ydim + 2], float (*rho)[ydim + 2])
 {
     for (int i = 1; i < xdim + 1; i++)
     {
         for (int j = 1; j < ydim + 1; j++)
         {
-            double x_temp, y_temp;
-            x_temp = 1.0 * (double)(i - 1) / (double)xdim;
-            y_temp = 1.0 * (double)(j - 1) / (double)ydim; // scale the i and j to make 0 < i,j < 1
+            float x_temp, y_temp;
+            x_temp = 1.0 * (float)(i - 1) / (float)xdim;
+            y_temp = 1.0 * (float)(j - 1) / (float)ydim; // scale the i and j to make 0 < i,j < 1
 
             if (y_temp <= 0.5)
             {
@@ -75,9 +75,9 @@ void initRho_N_U(double (*u_x)[ydim + 2], double (*u_y)[ydim + 2], double (*rho)
     }
 }
 
-double findBig(double (*u)[ydim + 2])
+float findBig(float (*u)[ydim + 2])
 {
-    double big = 0.0;
+    float big = 0.0;
     for (int i = 1; i < xdim + 1; i++)
     {
         for (int j = 1; j < ydim + 1; j++)
@@ -88,9 +88,9 @@ double findBig(double (*u)[ydim + 2])
     }
     return big;
 }
-double findSmall(double (*u)[ydim + 2])
+float findSmall(float (*u)[ydim + 2])
 {
-    double small = 0.0;
+    float small = 0.0;
     for (int i = 1; i < xdim + 1; i++)
     {
         for (int j = 1; j < ydim + 1; j++)
@@ -125,12 +125,12 @@ int getDelta(int a, int b)
 /*
  * init the distribution function fi 
 */
-void initFi(double (*fi)[ydim + 2][Q], double (*rho)[ydim + 2])
+void initFi(float (*fi)[ydim + 2][Q], float (*rho)[ydim + 2])
 {
 
     // for check problem
-    double A = 1 / (cVel * cVel);
-    double B = 1 / 2 * cVel * cVel * cVel * cVel;
+    float A = 1 / (cVel * cVel);
+    float B = 1 / 2 * cVel * cVel * cVel * cVel;
     for (int i = 0; i <= xdim + 1; i++)
     {
         for (int j = 0; j <= ydim + 1; j++)
@@ -180,9 +180,9 @@ void printfeq()
  *  Use computeFeq() instead !!
  */
 
-void initFeq(double (*rho)[ydim + 2], double (*feq)[ydim + 2][Q])
+void initFeq(float (*rho)[ydim + 2], float (*feq)[ydim + 2][Q])
 {
-    double c_s = 1 / sqrt(3); // the speed of sound in the lattice
+    float c_s = 1 / sqrt(3); // the speed of sound in the lattice
     for (int i = 0; i <= xdim + 1; i++)
     {
         for (int j = 0; j <= ydim + 1; j++)
@@ -197,7 +197,7 @@ void initFeq(double (*rho)[ydim + 2], double (*feq)[ydim + 2][Q])
 }
 
 // move fi --> fi_star in the direction of ei
-void streamStep(double (*fi_star)[ydim + 2][Q], double (*fi)[ydim + 2][Q])
+void streamStep(float (*fi_star)[ydim + 2][Q], float (*fi)[ydim + 2][Q])
 {
 
     // periodic condition
@@ -253,7 +253,7 @@ void printfi_star()
  * compute the macroscopic density rho and velocity u, u = (ux, uy) for every lattice
 */
 
-void computeRho_N_U(double (*rho)[ydim + 2], double (*u_x)[ydim + 2], double (*u_y)[ydim + 2], double (*fi)[ydim + 2][Q])
+void computeRho_N_U(float (*rho)[ydim + 2], float (*u_x)[ydim + 2], float (*u_y)[ydim + 2], float (*fi)[ydim + 2][Q])
 {
     for (int i = 1; i < xdim + 1; i++)
     {
@@ -278,14 +278,14 @@ void computeRho_N_U(double (*rho)[ydim + 2], double (*u_x)[ydim + 2], double (*u
 * Compute the equilibrium distribution function f_a^eq for every lattice
 * int ex[Q] = {0, 1, 0, -1, 0, 1, -1, -1, 1};
 * int ey[Q] = {0, 0, 1, 0, -1, 1, 1, -1, -1};
-* double **u_x, double **u_y
+* float **u_x, float **u_y
 */
-void computeFeq(double (*rho)[ydim + 2], double (*u_x)[ydim + 2], double (*u_y)[ydim + 2], double (*feq)[ydim + 2][Q])
+void computeFeq(float (*rho)[ydim + 2], float (*u_x)[ydim + 2], float (*u_y)[ydim + 2], float (*feq)[ydim + 2][Q])
 {
-    double f1 = 3.0;
-    double f2 = 9.0 / 2.0;
-    double f3 = 3.0 / 2.0;
-    double uuDot, euDot, si;
+    float f1 = 3.0;
+    float f2 = 9.0 / 2.0;
+    float f3 = 3.0 / 2.0;
+    float uuDot, euDot, si;
 
     for (int i = 1; i < xdim + 1; i++)
     {
@@ -307,7 +307,7 @@ void computeFeq(double (*rho)[ydim + 2], double (*u_x)[ydim + 2], double (*u_y)[
 * Collide Step : calculate the update distribution function fi = fi_Star - (fi_star - feq) / tau
 */
 
-void collideStep(double (*fi)[ydim + 2][Q], double (*feq)[ydim + 2][Q], double (*fi_star)[ydim + 2][Q], double tau)
+void collideStep(float (*fi)[ydim + 2][Q], float (*feq)[ydim + 2][Q], float (*fi_star)[ydim + 2][Q], float tau)
 {
     for (int i = 1; i < xdim + 1; i++)
     {
@@ -321,7 +321,7 @@ void collideStep(double (*fi)[ydim + 2][Q], double (*feq)[ydim + 2][Q], double (
     }
 }
 
-void printRho(double (*rho)[ydim + 2])
+void printRho(float (*rho)[ydim + 2])
 {
     printf("\nthe rho metics is: \n");
     for (int i = 1; i < xdim + 1; i++)
@@ -335,7 +335,7 @@ void printRho(double (*rho)[ydim + 2])
     printf("\n");
 }
 
-void calWholeDensity(double (*fi)[ydim + 2][Q], double mass)
+void calWholeDensity(float (*fi)[ydim + 2][Q], float mass)
 {
     mass = 0.0;
     for (int i = 1; i < xdim + 1; i++)
@@ -351,9 +351,9 @@ void calWholeDensity(double (*fi)[ydim + 2][Q], double mass)
     printf("The total mass is %f \n", mass);
 }
 
-void calWholeMomentum(double (*rho)[ydim + 2], double (*u_x)[ydim + 2], double (*u_y)[ydim + 2])
+void calWholeMomentum(float (*rho)[ydim + 2], float (*u_x)[ydim + 2], float (*u_y)[ydim + 2])
 {
-    double momentum[2] = {0.0};
+    float momentum[2] = {0.0};
     for (int i = 1; i < xdim + 1; i++)
     {
         for (int j = 1; j < ydim + 1; j++)
@@ -365,7 +365,7 @@ void calWholeMomentum(double (*rho)[ydim + 2], double (*u_x)[ydim + 2], double (
     printf("the Momentum in X is %f, in y is %f \n", momentum[0], momentum[1]);
 }
 
-void checkCorrectness(int iteration, double (*rho)[ydim + 2], double (*u_x)[ydim + 2], double (*u_y)[ydim + 2], double (*fi)[ydim + 2][Q], double mass)
+void checkCorrectness(int iteration, float (*rho)[ydim + 2], float (*u_x)[ydim + 2], float (*u_y)[ydim + 2], float (*fi)[ydim + 2][Q], float mass)
 {
     if (iteration % 1000 == 0)
     {
@@ -377,16 +377,16 @@ void checkCorrectness(int iteration, double (*rho)[ydim + 2], double (*u_x)[ydim
 /// make the calcualation
 ///
 
-void calVorticity(double (*u_x)[ydim + 2], double (*u_y)[ydim + 2])
+void calVorticity(float (*u_x)[ydim + 2], float (*u_y)[ydim + 2])
 {
     FILE *fp;
-    fp = fopen("Vorticity.csv", "w");
+    fp = fopen("Vorticity_float128.csv", "w");
     for (int i = 1; i < xdim + 1; i++)
     {
         for (int j = 1; j < ydim + 1; j++)
         {
-            double voriticity = 0.5 * (u_y[i + 1][j] - u_y[i - 1][j]) + 0.5 * (u_x[i][j + 1] - u_x[i][j - 1]);
-            fprintf(fp, "%.7f,", voriticity);
+            float Vorticity = 0.5 * (u_y[i + 1][j] - u_y[i - 1][j]) + 0.5 * (u_x[i][j + 1] - u_x[i][j - 1]);
+            fprintf(fp, "%.7f,", Vorticity);
         }
         fprintf(fp, "\n");
     }
@@ -406,7 +406,7 @@ void printUxAndUy()
     }
 }
 
-void showTheParameters(int maxiteration, double nu, double tau)
+void showTheParameters(int maxiteration, float nu, float tau)
 {
     printf("The size of the simulation is %d * %d,\nThe max iteration is %d\nU_0 = 0.01\nK = 30.0\ndelta = 0.05\n", xdim, ydim, maxiteration);
     printf("Simulation Start:\n");
@@ -422,11 +422,11 @@ float getTime(void) {
 int main(int argc, char const *argv[])
 {
 
-    double big, small;
+    float big, small;
     int maxiterations = 12000;
     int iterations = 0;
-    double nu = 0.000128;
-    double tau = (1 + nu * 6) / 2;
+    float nu = 0.000128;
+    float tau = (1 + nu * 6) / 2;
     float tstart, tend;
     tstart = getTime();
     initRho_N_U(u_x, u_y, rho);
