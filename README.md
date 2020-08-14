@@ -41,6 +41,7 @@ Or take look at `spinn-20.cs.man.ac.uk/` you can connect to a SpiNNaker machine 
 Then upload the `lattice_cell.aplx` and `lattice_cell.dict` and create a Jupyter Notebook with SpyNNaker kernel. Then run the code in `/SpiNN_LB/pythonCode/LB_method.ipynb`. 
 
 ## File Structure
+```
 .
 ├── build
 ├── C_implementation // A LBM implementation in C
@@ -61,5 +62,6 @@ Then upload the `lattice_cell.aplx` and `lattice_cell.dict` and create a Jupyter
 ├── README.md
 └── src
     └── lattice_cell.c // A basic lattice (as in lattice Boltzmann) on SpiNNaker in C
+```
 
 
