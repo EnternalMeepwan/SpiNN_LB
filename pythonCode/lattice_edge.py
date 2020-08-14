@@ -1,3 +1,12 @@
+# 
+#   This is a basic implementation of a lattice Boltzmann method on SpiNNaker.
+#   This project is currently being released under the GPL 3.0 license. Use it Free as in
+#   Freedom. 
+#  
+#   The up-to-date information of SpiNNaker Project can be found here:
+#   https://spinnakermanchester.github.io/
+#  
+
 from pacman.model.graphs.machine import MachineEdge
 
 

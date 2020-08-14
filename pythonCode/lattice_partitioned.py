@@ -1,57 +1,24 @@
-# Copyright (c) 2017-2019 The University of Manchester
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# 
+#   This is a basic implementation of a lattice Boltzmann method on SpiNNaker.
+#   This project is currently being released under the GPL 3.0 license. Use it Free as in
+#   Freedom. 
+#  
+#   The up-to-date information of SpiNNaker Project can be found here:
+#   https://spinnakermanchester.github.io/
+#  
+
 import math
 import os
-# from pacman.model.graphs.machine import MachineEdge
-
+from pacman.model.graphs.machine import MachineEdge
 import spinnaker_graph_front_end as front_end
+from lattice_basic_cell import LatticeBasicCell
+from lattice_edge import LatticeEdge
+import global_settings
 
-# 12000
 
-MAX_X_SIZE_OF_FABRIC = 256
-MAX_Y_SIZE_OF_FABRIC = 256
+
+
 n_chips = (MAX_X_SIZE_OF_FABRIC * MAX_Y_SIZE_OF_FABRIC) // 10
-
-ex = [0, 1, 0, -1, 0, 1, -1, -1, 1]
-ey = [0, 0, 1, 0, -1, 1, 1, -1, -1]
-
-
-def initVelocity(x_pos, y_pos):
-    """
-    Init the velocity u, v = (u_x, u_y)
-  
-    ydim = xdim = N = 128
-    K = 30 / N
-    delta = 0.05
-  
-    u = tanh( K (y - 0.25 * ydim) ) for y <= 0.5 * ydim 
-    u = U_0 tanh( K (0.75 * ydim - y) ) for y >  0.5 * ydim
-    v = delta sin( 2pi *x / xdim )
-    """
-    U_0 = 0.01
-    K = 30.0
-    delta = 0.05
-    x_temp = 1.0 * (x_pos) / MAX_X_SIZE_OF_FABRIC
-    y_temp = 1.0 * (y_pos) / MAX_Y_SIZE_OF_FABRIC
-    if y_temp <= 0.5:
-        u_x = U_0 * math.tanh(K * (y_temp - 0.25))
-    else:
-        u_x = U_0 * math.tanh(K * (0.75 - y_temp))
-    u_y = U_0 * delta * math.sin(2 * math.pi * (x_temp + 0.25))
-    return u_x, u_y
-
 
 # set up the front end and ask for the detected machines dimensions
 front_end.setup(
