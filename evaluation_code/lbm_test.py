@@ -16,7 +16,8 @@ c_float_128=pd.read_csv("data/Vorticity_float128.csv", header=None).dropna(axis=
 c_float_64=pd.read_csv("data/Vorticity_float64.csv", header=None).dropna(axis=1).iloc[1:-1,1:-1].to_numpy()
 
 #spinn
-spi_256=pd.read_csv("data/Vorticity_spinn_256.csv").dropna(axis = 1)
+spi_256=pd.read_csv("data/Vorticity_spinn_256.csv").dropna(axis = 1).iloc[1:-1, 1:-1].to_numpy()
+
 spi_128=pd.read_csv("data/Vorticity_spinn_128.csv").dropna(axis = 1).iloc[1:-1,1:-1].to_numpy()
 spi_64=pd.read_csv("data/Vorticity_spinn_64.csv").dropna(axis = 1).iloc[1:-1,1:-1].to_numpy()
 
@@ -30,7 +31,4 @@ def calL2Num(data1, data2):
 def calLmaxNum(data1, data2):
     return (abs(data1-data2)).max()
 
-
-
-spi_256
 
