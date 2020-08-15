@@ -1,5 +1,9 @@
 # SpiNN_LB
 
+## TL;DR
+SpiNN_LB is a Master thesis project. SpiNN_LB is a prototype of a basic D2Q9 lattice Boltzmann method implemented on the workd-leading neural-inspired hardware archtechture, the SpiNNaker platform.
+
+
 ## Development Environment/ Dependency
 The SpiNNaker is a dependency-hungry program. The whole development is under the following version of SpiNNaker software and do not guarantee to run at any other version.
 
