@@ -3,6 +3,17 @@
 ## TL;DR
 SpiNN_LB is a Master thesis project. SpiNN_LB is a prototype of a basic D2Q9 lattice Boltzmann method implemented on the world-leading neural-inspired hardware archtechture, the SpiNNaker platform.
 
+## Project information
+
+**Student name:** Yuan Feng
+
+**Student number:** s1909558
+
+**EPCC supervisor name(s):** 
+    * Dr. Kevin Stratford
+**External supervisor(s):**
+    * Dr. Alan Stokes (University of Manchester)
+
 
 ## Development Environment/ Dependency
 The SpiNNaker is a dependency-hungry program. The whole development is under the following version of SpiNNaker software and do not guarantee to run at any other version.
