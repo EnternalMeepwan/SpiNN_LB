@@ -26,6 +26,8 @@ The SpiNNaker is a dependency-hungry program. The whole development is under the
 | SpiNNakerGraphFrontEnd |                        | 21d1885   |
 | spinnaker_tools        | SpiNNaker 5.0.0 v3.2.5 | 12e29c5   |
 
+If you have any trouble reflog to the git version and just want a check of the results, just use the executables in the `/SpiNN_LB/executable_backup`
+
 ## Compile and Run
 
 Before compile, you need a SpiNNaker development installed, if not look here: https://spinnakermanchester.github.io/ .
@@ -39,10 +41,27 @@ make
 
 ### Run 
 And there would be two generated files: `lattice_cell.aplx` and `lattice_cell.dict`
+
 Then if you have SpiNNaker board (if you do have a board you probably know how to run), run the python code in the `/SpiNN_LB/pythonCode`, especially`lattice_partitioned.py`. However, this project is not developed with a physical board on the hand. Therefore, the `lattice_partitioned.py` do not guarantee to work.
 
-Or take look at `spinn-20.cs.man.ac.uk/` you can connect to a SpiNNaker machine ther.
+Most of you may not have a board. Take look at `spinn-20.cs.man.ac.uk/` you can connect to a SpiNNaker machine there in a Jupyter Notebook.
 Then upload the `lattice_cell.aplx` and `lattice_cell.dict` and create a Jupyter Notebook with SpyNNaker kernel. Then run the code in `/SpiNN_LB/pythonCode/LB_method.ipynb`. 
+
+
+
+
+## Run a different simulation
+These code implement a 128 * 128 lattice Boltzmann method by default in Minion and Brown's paper (https://permalink.lanl.gov/object/tr?what=info:lanl-repo/lareport/LA-UR-96-4037).
+
+If you want to run in a different scale you need to:
+    1. Change the kinematic viscosity (nu) and relaxation time (tau) in C according to your physical settings
+    2. Change the running time (in timestep) in Python according to your physical settings
+    3. Change the simulation scale in Python according to your physical settings
+    4. Probably adjust the maximum delay and time_scale_factor in Python and make it work.
+    
+## Visualization
+In the `/SpiNN_LB/pythonCode/LB_method.ipynb`, we implement a contour visualizer of vorticity of the simulation. Use it.
+
 
 ## File Structure
 ```
