@@ -49,8 +49,8 @@ float rho = 1.0;
 float u_x = 0.0001;
 float u_y = 1.0;
 
-//! parameter
-float nu = 0.000128; //
+//! parameter you need to change this according to the simulation
+float nu = 0.000128; // kinematic viscosity
 float tau = 0.500384; // relaxation time (reverse time)
 
 /*
